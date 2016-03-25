@@ -27,6 +27,5 @@ namespace SSH_Remote_Client
             else
                 fldLog.Text = SSH_Remote_Client.BL.ServerManager.getLog(fldIP.Text, fldLogin.Text, fldPass.Text);
         }
-
     }
 }
