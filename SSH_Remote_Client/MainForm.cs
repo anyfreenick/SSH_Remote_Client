@@ -1,4 +1,6 @@
 ﻿using System;
+using SSH_Remote_Client.BL;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace SSH_Remote_Client
