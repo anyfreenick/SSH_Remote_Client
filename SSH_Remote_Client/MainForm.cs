@@ -3,14 +3,45 @@ using System.Windows.Forms;
 
 namespace SSH_Remote_Client
 {
-    public partial class Form1 : Form
+    public interface IMainForm
     {
-        public Form1()
+        string UserName { get; }
+        string Passwd { get; }
+        string HostName { get; }
+        string Log { get; set; }
+    }
+
+    public partial class MainForm : Form, IMainForm
+    {
+        public MainForm()
         {
             InitializeComponent();
             fldLogin.Text = "root";
             fldPass.Text = "kronites";
         }
+
+        #region Реализация интерфейса
+        public string UserName
+        {
+            get { return fldLogin.Text; }
+        }
+
+        public string Passwd
+        {
+            get { return fldPass.Text; }
+        }
+
+        public string HostName
+        {
+            get { return fldIP.Text; }
+        }
+
+        public string Log
+        {
+            get { return fldLog.Text; }
+            set { fldLog.Text = value; }
+        }
+        #endregion
 
         private void btnStart_Click(object sender, EventArgs e)
         {
