@@ -20,7 +20,7 @@ namespace SSH_Remote_Client
             fldPass.Text = "kronites";
         }
 
-        #region Реализация интерфейса
+        #region Реализация интерфейса IMainForm
         public string UserName
         {
             get { return fldLogin.Text; }
