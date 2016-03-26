@@ -11,6 +11,8 @@ namespace SSH_Remote_Client
         string Passwd { get; }
         string HostName { get; }
         string Log { get; set; }
+        string RemotePath { get; }
+        void AddItemToList(object item);
     }
 
     public partial class MainForm : Form, IMainForm
@@ -18,8 +20,6 @@ namespace SSH_Remote_Client
         public MainForm()
         {
             InitializeComponent();
-            fldLogin.Text = "root";
-            fldPass.Text = "kronites";
         }
 
         #region Реализация интерфейса IMainForm
@@ -42,6 +42,16 @@ namespace SSH_Remote_Client
         {
             get { return fldLog.Text; }
             set { fldLog.Text = value; }
+        }
+
+        public string RemotePath
+        {
+            get { return fldRemotePath.Text; }
+        }
+
+        public void AddItemToList(object item)
+        {
+            lstFileList.Items.Add(item);
         }
         #endregion
 

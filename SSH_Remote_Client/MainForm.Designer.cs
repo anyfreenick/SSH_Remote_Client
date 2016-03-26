@@ -41,11 +41,11 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.btnSrchFiles = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.lstFileList = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.fldRemotePath = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -156,9 +156,9 @@
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.label5);
-            this.tabPage1.Controls.Add(this.textBox1);
+            this.tabPage1.Controls.Add(this.fldRemotePath);
             this.tabPage1.Controls.Add(this.btnSrchFiles);
-            this.tabPage1.Controls.Add(this.listBox1);
+            this.tabPage1.Controls.Add(this.lstFileList);
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Controls.Add(this.fldLog);
             this.tabPage1.Controls.Add(this.label4);
@@ -180,13 +180,13 @@
             this.btnSrchFiles.Text = "Поиск файлов";
             this.btnSrchFiles.UseVisualStyleBackColor = true;
             // 
-            // listBox1
+            // lstFileList
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(689, 38);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(215, 342);
-            this.listBox1.TabIndex = 12;
+            this.lstFileList.FormattingEnabled = true;
+            this.lstFileList.Location = new System.Drawing.Point(689, 38);
+            this.lstFileList.Name = "lstFileList";
+            this.lstFileList.Size = new System.Drawing.Size(215, 342);
+            this.lstFileList.TabIndex = 12;
             // 
             // groupBox1
             // 
@@ -222,12 +222,12 @@
             this.menuStrip1.TabIndex = 11;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // textBox1
+            // fldRemotePath
             // 
-            this.textBox1.Location = new System.Drawing.Point(689, 15);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(141, 20);
-            this.textBox1.TabIndex = 14;
+            this.fldRemotePath.Location = new System.Drawing.Point(689, 15);
+            this.fldRemotePath.Name = "fldRemotePath";
+            this.fldRemotePath.Size = new System.Drawing.Size(141, 20);
+            this.fldRemotePath.TabIndex = 14;
             // 
             // label5
             // 
@@ -276,9 +276,9 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.Button btnSrchFiles;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox lstFileList;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox fldRemotePath;
     }
 }
 
