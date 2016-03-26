@@ -9,7 +9,9 @@ namespace SSH_Remote_Client.BL
     public interface IFileManager
     {
         string RemotePath { get; set; }
+
         List<string> GetFileList();
+        string GetFileContent(string fileName);
         void UploadFile(string filePath);
     }
 
@@ -28,6 +30,13 @@ namespace SSH_Remote_Client.BL
         {
             string[] authParams = { host, username, pass };
             SetConnection(authParams);
+        }
+
+        public string GetFileContent(string fileName)
+        {
+            SshClient ssh = new SshClient(_connection);
+            string content = ssh.RunCommand("cat " + _remotePath + fileName).Result;
+            return content;
         }
 
         public List<string> GetFileList()
