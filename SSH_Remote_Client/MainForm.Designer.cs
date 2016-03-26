@@ -37,7 +37,6 @@
             this.btnUploadFile = new System.Windows.Forms.Button();
             this.fldLog = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnGetLog = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label5 = new System.Windows.Forms.Label();
@@ -47,9 +46,14 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -118,7 +122,7 @@
             this.fldLog.Multiline = true;
             this.fldLog.Name = "fldLog";
             this.fldLog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.fldLog.Size = new System.Drawing.Size(555, 468);
+            this.fldLog.Size = new System.Drawing.Size(555, 497);
             this.fldLog.TabIndex = 7;
             // 
             // label4
@@ -129,16 +133,6 @@
             this.label4.Size = new System.Drawing.Size(25, 13);
             this.label4.TabIndex = 8;
             this.label4.Text = "Log";
-            // 
-            // btnGetLog
-            // 
-            this.btnGetLog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnGetLog.Location = new System.Drawing.Point(128, 512);
-            this.btnGetLog.Name = "btnGetLog";
-            this.btnGetLog.Size = new System.Drawing.Size(105, 23);
-            this.btnGetLog.TabIndex = 9;
-            this.btnGetLog.Text = "Посмотреть лог";
-            this.btnGetLog.UseVisualStyleBackColor = true;
             // 
             // tabControl1
             // 
@@ -160,7 +154,6 @@
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Controls.Add(this.fldLog);
             this.tabPage1.Controls.Add(this.label4);
-            this.tabPage1.Controls.Add(this.btnGetLog);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -187,7 +180,7 @@
             // 
             // btnSrchFiles
             // 
-            this.btnSrchFiles.Location = new System.Drawing.Point(689, 386);
+            this.btnSrchFiles.Location = new System.Drawing.Point(689, 512);
             this.btnSrchFiles.Name = "btnSrchFiles";
             this.btnSrchFiles.Size = new System.Drawing.Size(99, 23);
             this.btnSrchFiles.TabIndex = 13;
@@ -197,9 +190,10 @@
             // lstFileList
             // 
             this.lstFileList.FormattingEnabled = true;
+            this.lstFileList.HorizontalScrollbar = true;
             this.lstFileList.Location = new System.Drawing.Point(689, 38);
             this.lstFileList.Name = "lstFileList";
-            this.lstFileList.Size = new System.Drawing.Size(215, 342);
+            this.lstFileList.Size = new System.Drawing.Size(215, 472);
             this.lstFileList.TabIndex = 12;
             // 
             // groupBox1
@@ -230,11 +224,42 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(918, 24);
             this.menuStrip1.TabIndex = 11;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiExit});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // tsmiExit
+            // 
+            this.tsmiExit.Name = "tsmiExit";
+            this.tsmiExit.Size = new System.Drawing.Size(152, 22);
+            this.tsmiExit.Text = "Exit";
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiAbout});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // tsmiAbout
+            // 
+            this.tsmiAbout.Name = "tsmiAbout";
+            this.tsmiAbout.Size = new System.Drawing.Size(152, 22);
+            this.tsmiAbout.Text = "About";
             // 
             // MainForm
             // 
@@ -251,6 +276,8 @@
             this.tabPage1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -267,7 +294,6 @@
         private System.Windows.Forms.Button btnUploadFile;
         private System.Windows.Forms.TextBox fldLog;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button btnGetLog;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
@@ -277,6 +303,10 @@
         private System.Windows.Forms.ListBox lstFileList;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox fldRemotePath;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiExit;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiAbout;
     }
 }
 

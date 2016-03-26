@@ -73,8 +73,10 @@ namespace SSH_Remote_Client.BL
         {
             SftpClient sftp = new SftpClient(_connection);
             sftp.Connect();
-            var fileStream = File.OpenRead(filePath);
-            sftp.UploadFile(fileStream, _remotePath + fileStream.Name, true);
+            FileInfo file = new FileInfo(filePath);
+            string uploadFile = file.FullName;
+            var fileStream = new FileStream(uploadFile, FileMode.Open);
+            sftp.UploadFile(fileStream, _remotePath + "/" + file.Name, true, null);
             sftp.Disconnect();
             sftp.Dispose();
         }

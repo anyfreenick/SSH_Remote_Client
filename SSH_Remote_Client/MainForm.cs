@@ -12,6 +12,7 @@ namespace SSH_Remote_Client
         string HostName { get; }
         string Log { get; set; }
         string RemotePath { get; }
+        string SelectedItem { get; }
         void AddItemToList(object item);
 
         //events
@@ -19,6 +20,7 @@ namespace SSH_Remote_Client
         event EventHandler SearchFilesClick;
         event EventHandler ShowLogClick;
         event EventHandler ListBoxItemDoubleClick;
+        event EventHandler ToolStripMenuAboutClick;
     }
 
     public partial class MainForm : Form, IMainForm
@@ -34,10 +36,11 @@ namespace SSH_Remote_Client
 
             btnUploadFile.Click += BtnUploadFile_Click;
             btnSrchFiles.Click += BtnSrchFiles_Click;
-            btnGetLog.Click += BtnGetLog_Click;
             lstFileList.MouseDoubleClick += LstFileList_MouseDoubleClick;
+            tsmiExit.Click += TsmExit_Click;
+            tsmiAbout.Click += TsmiAbout_Click;
         }
-
+        
         #region Проброс событий
         private void BtnUploadFile_Click(object sender, EventArgs e)
         {
@@ -58,7 +61,11 @@ namespace SSH_Remote_Client
         {
             if (ListBoxItemDoubleClick != null) ListBoxItemDoubleClick(this, EventArgs.Empty);
         }
-
+        
+        private void TsmiAbout_Click(object sender, EventArgs e)
+        {
+            if (ToolStripMenuAboutClick != null) ToolStripMenuAboutClick(this, EventArgs.Empty);
+        }
         #endregion
 
         #region Реализация интерфейса IMainForm
@@ -93,10 +100,23 @@ namespace SSH_Remote_Client
             lstFileList.Items.Add(item);
         }
 
+        public string SelectedItem
+        {
+            get { return lstFileList.SelectedItem.ToString(); }
+        }
+
         public event EventHandler FileUploadClick;
         public event EventHandler SearchFilesClick;
         public event EventHandler ShowLogClick;
         public event EventHandler ListBoxItemDoubleClick;
+        public event EventHandler ToolStripMenuAboutClick;
+        #endregion
+
+        #region Код саой формы
+        private void TsmExit_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
         #endregion
     }
 }

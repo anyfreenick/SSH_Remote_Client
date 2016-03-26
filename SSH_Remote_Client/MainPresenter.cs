@@ -20,6 +20,30 @@ namespace SSH_Remote_Client
             _messageService = service;
             
             _view.SearchFilesClick += _view_SearchFilesClick;
+            _view.ListBoxItemDoubleClick += _view_ListBoxItemDoubleClick;
+            _view.ToolStripMenuAboutClick += _view_ToolStripMenuAboutClick;
+            _view.FileUploadClick += _view_FileUploadClick;
+        }
+
+        private void _view_FileUploadClick(object sender, EventArgs e)
+        {
+            connect();
+            _manager.UploadFile("script.sh");
+        }
+
+        private void _view_ToolStripMenuAboutClick(object sender, EventArgs e)
+        {
+            _messageService.ShowMessage("Надо написать какой-нибудь бред!!!");
+        }
+
+        private void _view_ListBoxItemDoubleClick(object sender, EventArgs e)
+        {
+            connect();
+            string log = _manager.GetFileContent(_view.SelectedItem);
+            if (log != "")
+                _view.Log = log;                         
+            else
+                _messageService.ShowMessage("Log file is empty");
         }
 
         private void _view_SearchFilesClick(object sender, EventArgs e)
