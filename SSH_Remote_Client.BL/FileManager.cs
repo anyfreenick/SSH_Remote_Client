@@ -64,11 +64,6 @@ namespace SSH_Remote_Client.BL
             client.Dispose();
         }
 
-        public void SetRemotePath(string path)
-        {
-            _remotePath = path;
-        }
-
         private void SetConnection(string[] authParams)
         {
             _connection = new ConnectionInfo(authParams[0]/*host*/, 22, authParams[1]/*username*/, new AuthenticationMethod[]
