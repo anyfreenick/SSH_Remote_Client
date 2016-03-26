@@ -13,6 +13,12 @@ namespace SSH_Remote_Client
         string Log { get; set; }
         string RemotePath { get; }
         void AddItemToList(object item);
+
+        //events
+        event EventHandler FileUploadClick;
+        event EventHandler SearchFilesClick;
+        event EventHandler ShowLogClick;
+        event EventHandler ListBoxItemDoubleClick;
     }
 
     public partial class MainForm : Form, IMainForm
@@ -20,7 +26,34 @@ namespace SSH_Remote_Client
         public MainForm()
         {
             InitializeComponent();
+            btnUploadFile.Click += BtnUploadFile_Click;
+            btnSrchFiles.Click += BtnSrchFiles_Click;
+            btnGetLog.Click += BtnGetLog_Click;
+            lstFileList.MouseDoubleClick += LstFileList_MouseDoubleClick;
         }
+
+        #region Проброс событий
+        private void BtnUploadFile_Click(object sender, EventArgs e)
+        {
+            if (FileUploadClick != null) FileUploadClick(this, EventArgs.Empty);
+        }
+
+        private void BtnSrchFiles_Click(object sender, EventArgs e)
+        {
+            if (SearchFilesClick != null) SearchFilesClick(this, EventArgs.Empty);
+        }
+
+        private void BtnGetLog_Click(object sender, EventArgs e)
+        {
+            if (ShowLogClick != null) ShowLogClick(this, EventArgs.Empty);
+        }
+
+        private void LstFileList_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (ListBoxItemDoubleClick != null) ListBoxItemDoubleClick(this, EventArgs.Empty);
+        }
+
+        #endregion
 
         #region Реализация интерфейса IMainForm
         public string UserName
@@ -53,32 +86,11 @@ namespace SSH_Remote_Client
         {
             lstFileList.Items.Add(item);
         }
+
+        public event EventHandler FileUploadClick;
+        public event EventHandler SearchFilesClick;
+        public event EventHandler ShowLogClick;
+        public event EventHandler ListBoxItemDoubleClick;
         #endregion
-
-        private void btnStart_Click(object sender, EventArgs e)
-        {
-            SSH_Remote_Client.BL.ServerManager.copyFileToServer("script.sh", fldIP.Text, fldLogin.Text, fldPass.Text);
-            SSH_Remote_Client.BL.ServerManager.runCommandOnServer(fldIP.Text, fldLogin.Text, fldPass.Text);
-        }
-
-        private void btnGetLog_Click(object sender, EventArgs e)
-        {
-            fldLog.Clear();
-            string log = SSH_Remote_Client.BL.ServerManager.getLog(fldIP.Text, fldLogin.Text, fldPass.Text);
-            if (log == "")
-                MessageBox.Show("Log is empty");
-            else
-                fldLog.Text = SSH_Remote_Client.BL.ServerManager.getLog(fldIP.Text, fldLogin.Text, fldPass.Text);
-        }
-
-        //Убрать остюдова нахер
-        private string[] getAuthParams()
-        {
-            string[] authParams = new string[3];
-            authParams[0] = fldIP.Text;
-            authParams[1] = fldLogin.Text;
-            authParams[2] = fldPass.Text;
-            return authParams;
-        }
     }
 }

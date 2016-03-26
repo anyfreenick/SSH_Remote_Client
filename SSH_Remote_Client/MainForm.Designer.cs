@@ -34,19 +34,19 @@
             this.fldPass = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.fldIP = new System.Windows.Forms.TextBox();
-            this.btnStart = new System.Windows.Forms.Button();
+            this.btnUploadFile = new System.Windows.Forms.Button();
             this.fldLog = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnGetLog = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label5 = new System.Windows.Forms.Label();
+            this.fldRemotePath = new System.Windows.Forms.TextBox();
             this.btnSrchFiles = new System.Windows.Forms.Button();
             this.lstFileList = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fldRemotePath = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -100,15 +100,14 @@
             this.fldIP.Size = new System.Drawing.Size(100, 20);
             this.fldIP.TabIndex = 5;
             // 
-            // btnStart
+            // btnUploadFile
             // 
-            this.btnStart.Location = new System.Drawing.Point(6, 136);
-            this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(100, 23);
-            this.btnStart.TabIndex = 6;
-            this.btnStart.Text = "Запуск";
-            this.btnStart.UseVisualStyleBackColor = true;
-            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+            this.btnUploadFile.Location = new System.Drawing.Point(6, 136);
+            this.btnUploadFile.Name = "btnUploadFile";
+            this.btnUploadFile.Size = new System.Drawing.Size(100, 23);
+            this.btnUploadFile.TabIndex = 6;
+            this.btnUploadFile.Text = "Upload file";
+            this.btnUploadFile.UseVisualStyleBackColor = true;
             // 
             // fldLog
             // 
@@ -140,7 +139,6 @@
             this.btnGetLog.TabIndex = 9;
             this.btnGetLog.Text = "Посмотреть лог";
             this.btnGetLog.UseVisualStyleBackColor = true;
-            this.btnGetLog.Click += new System.EventHandler(this.btnGetLog_Click);
             // 
             // tabControl1
             // 
@@ -171,6 +169,22 @@
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(686, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(68, 13);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Remote path";
+            // 
+            // fldRemotePath
+            // 
+            this.fldRemotePath.Location = new System.Drawing.Point(689, 15);
+            this.fldRemotePath.Name = "fldRemotePath";
+            this.fldRemotePath.Size = new System.Drawing.Size(141, 20);
+            this.fldRemotePath.TabIndex = 14;
+            // 
             // btnSrchFiles
             // 
             this.btnSrchFiles.Location = new System.Drawing.Point(689, 386);
@@ -193,7 +207,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.fldLogin);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.btnStart);
+            this.groupBox1.Controls.Add(this.btnUploadFile);
             this.groupBox1.Controls.Add(this.fldPass);
             this.groupBox1.Controls.Add(this.fldIP);
             this.groupBox1.Controls.Add(this.label3);
@@ -221,22 +235,6 @@
             this.menuStrip1.Size = new System.Drawing.Size(918, 24);
             this.menuStrip1.TabIndex = 11;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // fldRemotePath
-            // 
-            this.fldRemotePath.Location = new System.Drawing.Point(689, 15);
-            this.fldRemotePath.Name = "fldRemotePath";
-            this.fldRemotePath.Size = new System.Drawing.Size(141, 20);
-            this.fldRemotePath.TabIndex = 14;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(686, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(68, 13);
-            this.label5.TabIndex = 15;
-            this.label5.Text = "Remote path";
             // 
             // MainForm
             // 
@@ -266,7 +264,7 @@
         private System.Windows.Forms.TextBox fldPass;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox fldIP;
-        private System.Windows.Forms.Button btnStart;
+        private System.Windows.Forms.Button btnUploadFile;
         private System.Windows.Forms.TextBox fldLog;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnGetLog;
