@@ -26,6 +26,12 @@ namespace SSH_Remote_Client
         public MainForm()
         {
             InitializeComponent();
+
+            fldLogin.Text = "docent";
+            fldPass.Text = "123";
+            fldIP.Text = "192.168.2.37";
+            fldRemotePath.Text = "/home/docent";
+
             btnUploadFile.Click += BtnUploadFile_Click;
             btnSrchFiles.Click += BtnSrchFiles_Click;
             btnGetLog.Click += BtnGetLog_Click;

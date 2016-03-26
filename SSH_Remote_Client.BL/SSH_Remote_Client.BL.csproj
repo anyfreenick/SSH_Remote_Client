@@ -45,7 +45,6 @@
   <ItemGroup>
     <Compile Include="FileManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServerManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ExternalLibraries\" />

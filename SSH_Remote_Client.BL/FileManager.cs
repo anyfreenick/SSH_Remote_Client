@@ -13,18 +13,13 @@ namespace SSH_Remote_Client.BL
         List<string> GetFileList();
         string GetFileContent(string fileName);
         void UploadFile(string filePath);
+        void SetConnection(string host, string user, string pass);
     }
 
     public class FileManager: IFileManager
     {
         private string _remotePath;
         private ConnectionInfo _connection;
-
-        public FileManager(string host, string username, string pass)
-        {
-            string[] authParams = { host, username, pass };
-            SetConnection(authParams);
-        }
 
         #region Реализация интерфейса IFileManager
         public string RemotePath
@@ -46,7 +41,8 @@ namespace SSH_Remote_Client.BL
             foreach (SftpFile file in filelist)
             {
                 if (!file.IsDirectory)
-                    files.Add(file.Name);
+                    if (file.Name.Substring(0,1) != ".")
+                        files.Add(file.Name);
             }
             sftp.Disconnect();
             sftp.Dispose();
@@ -79,11 +75,11 @@ namespace SSH_Remote_Client.BL
         }
         #endregion
 
-        private void SetConnection(string[] authParams)
+        public void SetConnection(string host, string user, string pass)
         {
-            _connection = new ConnectionInfo(authParams[0]/*host*/, 22, authParams[1]/*username*/, new AuthenticationMethod[]
+            _connection = new ConnectionInfo(host, 22, user, new AuthenticationMethod[]
             {
-                new PasswordAuthenticationMethod(authParams[1]/*username*/, authParams[2]/*password*/)
+                new PasswordAuthenticationMethod(user, pass)
             });
         }        
     }
