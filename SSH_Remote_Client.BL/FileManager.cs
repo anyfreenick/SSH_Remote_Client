@@ -22,7 +22,7 @@ namespace SSH_Remote_Client.BL
         }
 
         //убрать хардкодный путь
-        public List<string> getFileList(string user, string pass, string host)
+        public List<string> getFileList()
         {
             List<string> files = new List<string>();
             SftpClient sftp = new SftpClient(connection);
@@ -40,7 +40,7 @@ namespace SSH_Remote_Client.BL
 
         public void UploadFile(string userName, string passwd, string host)
         {
-            SftpClient client = new SftpClient(SetConnection(userName, passwd, host));
+            SftpClient client = new SftpClient(connection);
             string file = "script.sh";
             var fileStream = File.OpenRead(file);
             client.UploadFile(fileStream, _remotePath + file, true);
@@ -60,13 +60,6 @@ namespace SSH_Remote_Client.BL
             {
                 new PasswordAuthenticationMethod(authParams[1], authParams[2]/*password*/)
             });
-        }
-
-        private ConnectionInfo SetConnection(string username, string passwd, string host, int port = 22)
-        {
-            ConnectionInfo connection = new ConnectionInfo(host, port, username, new AuthenticationMethod[] 
-            { new PasswordAuthenticationMethod(username, passwd) });
-            return connection;
-        }
+        }        
     }
 }

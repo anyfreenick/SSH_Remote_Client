@@ -40,9 +40,13 @@
             this.btnGetLog = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnSrchFiles = new System.Windows.Forms.Button();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -111,17 +115,17 @@
             this.fldLog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.fldLog.Location = new System.Drawing.Point(128, 16);
+            this.fldLog.Location = new System.Drawing.Point(128, 38);
             this.fldLog.Multiline = true;
             this.fldLog.Name = "fldLog";
             this.fldLog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.fldLog.Size = new System.Drawing.Size(774, 490);
+            this.fldLog.Size = new System.Drawing.Size(555, 468);
             this.fldLog.TabIndex = 7;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(130, 3);
+            this.label4.Location = new System.Drawing.Point(130, 19);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(25, 13);
             this.label4.TabIndex = 8;
@@ -151,6 +155,10 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label5);
+            this.tabPage1.Controls.Add(this.textBox1);
+            this.tabPage1.Controls.Add(this.btnSrchFiles);
+            this.tabPage1.Controls.Add(this.listBox1);
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Controls.Add(this.fldLog);
             this.tabPage1.Controls.Add(this.label4);
@@ -162,6 +170,23 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // btnSrchFiles
+            // 
+            this.btnSrchFiles.Location = new System.Drawing.Point(689, 386);
+            this.btnSrchFiles.Name = "btnSrchFiles";
+            this.btnSrchFiles.Size = new System.Drawing.Size(99, 23);
+            this.btnSrchFiles.TabIndex = 13;
+            this.btnSrchFiles.Text = "Поиск файлов";
+            this.btnSrchFiles.UseVisualStyleBackColor = true;
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(689, 38);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(215, 342);
+            this.listBox1.TabIndex = 12;
             // 
             // groupBox1
             // 
@@ -196,6 +221,22 @@
             this.menuStrip1.Size = new System.Drawing.Size(918, 24);
             this.menuStrip1.TabIndex = 11;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(689, 15);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(141, 20);
+            this.textBox1.TabIndex = 14;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(686, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(68, 13);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Remote path";
             // 
             // MainForm
             // 
@@ -234,6 +275,10 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.Button btnSrchFiles;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 

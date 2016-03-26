@@ -60,5 +60,15 @@ namespace SSH_Remote_Client
             else
                 fldLog.Text = SSH_Remote_Client.BL.ServerManager.getLog(fldIP.Text, fldLogin.Text, fldPass.Text);
         }
+
+        //Убрать остюдова нахер
+        private string[] getAuthParams()
+        {
+            string[] authParams = new string[3];
+            authParams[0] = fldIP.Text;
+            authParams[1] = fldLogin.Text;
+            authParams[2] = fldPass.Text;
+            return authParams;
+        }
     }
 }
