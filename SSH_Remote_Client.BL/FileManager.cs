@@ -33,6 +33,10 @@ namespace SSH_Remote_Client.BL
             set { _remotePath = value; }
         }
 
+        /// <summary>
+        /// Получает список файлов на удаленном сервере, в каталоге указанном в свойстве RemotePath
+        /// </summary>
+        /// <returns>List<string></returns>
         public List<string> GetFileList()
         {
             List<string> files = new List<string>();
@@ -49,6 +53,11 @@ namespace SSH_Remote_Client.BL
             return files;
         }
 
+        /// <summary>
+        /// Получает содержимое текстового файла
+        /// </summary>
+        /// <param name="fileName">Имя файла, путь к файлу указывается через свойство RemotePath</param>
+        /// <returns></returns>
         public string GetFileContent(string fileName)
         {
             SshClient ssh = new SshClient(_connection);
@@ -56,6 +65,10 @@ namespace SSH_Remote_Client.BL
             return content;
         }
 
+        /// <summary>
+        /// Загружает файл на удаленный сервер, а каталог указанный в свойстве RemotePath
+        /// </summary>
+        /// <param name="filePath">Путь к файлу</param>
         public void UploadFile(string filePath)
         {
             SftpClient client = new SftpClient(_connection);
