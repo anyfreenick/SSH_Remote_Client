@@ -20,23 +20,17 @@ namespace SSH_Remote_Client.BL
         private string _remotePath;
         private ConnectionInfo _connection;
 
-        public string RemotePath
-        {
-            get { return _remotePath; }
-            set { _remotePath = value; }
-        }
-
         public FileManager(string host, string username, string pass)
         {
             string[] authParams = { host, username, pass };
             SetConnection(authParams);
         }
 
-        public string GetFileContent(string fileName)
+        #region Реализация интерфейса IFileManager
+        public string RemotePath
         {
-            SshClient ssh = new SshClient(_connection);
-            string content = ssh.RunCommand("cat " + _remotePath + fileName).Result;
-            return content;
+            get { return _remotePath; }
+            set { _remotePath = value; }
         }
 
         public List<string> GetFileList()
@@ -48,11 +42,18 @@ namespace SSH_Remote_Client.BL
             foreach (SftpFile file in filelist)
             {
                 if (!file.IsDirectory)
-                files.Add(file.Name);
+                    files.Add(file.Name);
             }
             sftp.Disconnect();
             sftp.Dispose();
             return files;
+        }
+
+        public string GetFileContent(string fileName)
+        {
+            SshClient ssh = new SshClient(_connection);
+            string content = ssh.RunCommand("cat " + _remotePath + fileName).Result;
+            return content;
         }
 
         public void UploadFile(string filePath)
@@ -63,6 +64,7 @@ namespace SSH_Remote_Client.BL
             client.Disconnect();
             client.Dispose();
         }
+        #endregion
 
         private void SetConnection(string[] authParams)
         {
