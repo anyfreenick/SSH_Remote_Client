@@ -57,7 +57,11 @@ namespace SSH_Remote_Client.BL
         public string GetFileContent(string fileName)
         {
             SshClient ssh = new SshClient(_connection);
-            string content = ssh.RunCommand("cat " + _remotePath + fileName).Result;
+            ssh.Connect();
+            string content = ssh.RunCommand("cat " + _remotePath + "/" + fileName).Result;
+            content = content.Replace("\n", "\r\n");
+            ssh.Disconnect();
+            ssh.Dispose();
             return content;
         }
 
@@ -67,11 +71,12 @@ namespace SSH_Remote_Client.BL
         /// <param name="filePath">Путь к файлу</param>
         public void UploadFile(string filePath)
         {
-            SftpClient client = new SftpClient(_connection);
+            SftpClient sftp = new SftpClient(_connection);
+            sftp.Connect();
             var fileStream = File.OpenRead(filePath);
-            client.UploadFile(fileStream, _remotePath + fileStream.Name, true);
-            client.Disconnect();
-            client.Dispose();
+            sftp.UploadFile(fileStream, _remotePath + fileStream.Name, true);
+            sftp.Disconnect();
+            sftp.Dispose();
         }
         #endregion
 
