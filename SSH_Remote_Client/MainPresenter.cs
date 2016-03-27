@@ -27,6 +27,8 @@ namespace SSH_Remote_Client
 
         private void _view_FileUploadClick(object sender, EventArgs e)
         {
+            if (!CheckCredsEntered())
+                return;
             connect();
             _manager.UploadFile("script.sh");
         }
@@ -38,6 +40,8 @@ namespace SSH_Remote_Client
 
         private void _view_ListBoxItemDoubleClick(object sender, EventArgs e)
         {
+            if (!CheckCredsEntered())
+                return;
             connect();
             string log = _manager.GetFileContent(_view.SelectedItem);
             if (log != "")
@@ -48,11 +52,35 @@ namespace SSH_Remote_Client
 
         private void _view_SearchFilesClick(object sender, EventArgs e)
         {
+            if (!CheckCredsEntered())
+                return;
             connect();
             List<string> fileList = _manager.GetFileList();
             fileList.Sort();
             foreach (string file in fileList)
                 _view.AddItemToList(file);
+        }
+
+        private bool CheckCredsEntered()
+        {
+            if (_view.HostName == "")
+            {
+                _messageService.ShowError("Не заполнено поле IP или имя сервера");
+                return false;
+            }
+                
+            if (_view.UserName == "")
+            {
+                _messageService.ShowError("Не введено имя пользователя");
+                return false;
+            }
+                
+            if (_view.Passwd == "")
+            {
+                _messageService.ShowError("Не введен пароль");
+                return false;
+            }
+            return true;
         }
 
         private void connect()
