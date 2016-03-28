@@ -37,8 +37,9 @@ namespace SSH_Remote_Client
             lstFileList.MouseDoubleClick += LstFileList_MouseDoubleClick;
             tsmiExit.Click += TsmExit_Click;
             tsmiAbout.Click += TsmiAbout_Click;
+            fldRemotePath.KeyPress += FldRemotePath_KeyPress1;
         }
-        
+
         #region Проброс событий
         private void BtnUploadFile_Click(object sender, EventArgs e)
         {
@@ -120,6 +121,14 @@ namespace SSH_Remote_Client
         {
             Close();
         }
-        #endregion
+
+        private void FldRemotePath_KeyPress1(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\r')
+            {
+                if (SearchFilesClick != null) SearchFilesClick(this, EventArgs.Empty);
+            }
+        }
+        #endregion        
     }
 }
