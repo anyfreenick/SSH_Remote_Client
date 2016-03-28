@@ -52,6 +52,7 @@ namespace SSH_Remote_Client
         {
             if (!CheckCredsEntered())
                 return;
+            _view.ClearListBox();
             connect();
             List<string> fileList = _manager.GetFileList();
             fileList.Sort();

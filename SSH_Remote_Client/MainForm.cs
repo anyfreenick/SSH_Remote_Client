@@ -12,6 +12,7 @@ namespace SSH_Remote_Client
         string RemotePath { get; }
         string SelectedItem { get; }
         void AddItemToList(object item);
+        void ClearListBox();
 
         //events
         event EventHandler FileUploadClick;
@@ -100,6 +101,11 @@ namespace SSH_Remote_Client
         public string SelectedItem
         {
             get { return lstFileList.SelectedItem.ToString(); }
+        }
+
+        public void ClearListBox()
+        {
+            lstFileList.Items.Clear();
         }
 
         public event EventHandler FileUploadClick;
