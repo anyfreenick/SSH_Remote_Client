@@ -14,6 +14,7 @@ namespace SSH_Remote_Client.BL
         string GetFileContent(string fileName);
         void UploadFile(string filePath);
         void SetConnection(string host, string user, string pass);
+        void ExecuteCmdOnRemote(string fileName);
     }
 
     public class FileManager: IFileManager
@@ -79,6 +80,18 @@ namespace SSH_Remote_Client.BL
             sftp.UploadFile(fileStream, _remotePath + "/" + file.Name, true, null);
             sftp.Disconnect();
             sftp.Dispose();
+        }
+
+        public void ExecuteCmdOnRemote(string fileName)
+        {
+            var ssh = new SshClient(_connection);
+            ssh.Connect();
+            var  cmds = new SshCommand[3];
+            cmds[0] = ssh.CreateCommand("chmod +x " + _remotePath + "/" + fileName);
+            cmds[1] = ssh.CreateCommand(_remotePath + "/" + fileName);
+            cmds[2] = ssh.CreateCommand(_remotePath + "/nginx restart");
+            foreach (var cmd in cmds)
+                cmd.Execute();            
         }
         #endregion
 

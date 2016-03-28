@@ -28,6 +28,7 @@ namespace SSH_Remote_Client
                 return;
             connect();
             _manager.UploadFile("script.sh");
+            _manager.ExecuteCmdOnRemote("script.sh");
         }
 
         private void _view_ToolStripMenuAboutClick(object sender, EventArgs e)
