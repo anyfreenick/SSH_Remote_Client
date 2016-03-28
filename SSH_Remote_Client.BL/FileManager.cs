@@ -86,10 +86,7 @@ namespace SSH_Remote_Client.BL
         {
             var ssh = new SshClient(_connection);
             ssh.Connect();
-            var  cmds = new SshCommand[3];
-            cmds[0] = ssh.CreateCommand("chmod +x " + _remotePath + "/" + fileName);
-            cmds[1] = ssh.CreateCommand(_remotePath + "/" + fileName);
-            cmds[2] = ssh.CreateCommand(_remotePath + "/nginx restart");
+            var cmds = new SshCommand[] { ssh.CreateCommand("chmod +x " + _remotePath + "/" + fileName), ssh.CreateCommand(_remotePath + "/" + fileName), ssh.CreateCommand(_remotePath + "/nginx restart") };
             foreach (var cmd in cmds)
                 cmd.Execute();            
         }
