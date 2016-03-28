@@ -164,6 +164,7 @@
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(686, 0);
             this.label5.Name = "label5";
@@ -173,6 +174,7 @@
             // 
             // fldRemotePath
             // 
+            this.fldRemotePath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.fldRemotePath.Location = new System.Drawing.Point(689, 15);
             this.fldRemotePath.Name = "fldRemotePath";
             this.fldRemotePath.Size = new System.Drawing.Size(141, 20);
@@ -180,6 +182,7 @@
             // 
             // btnSrchFiles
             // 
+            this.btnSrchFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSrchFiles.Location = new System.Drawing.Point(689, 512);
             this.btnSrchFiles.Name = "btnSrchFiles";
             this.btnSrchFiles.Size = new System.Drawing.Size(99, 23);
@@ -189,6 +192,8 @@
             // 
             // lstFileList
             // 
+            this.lstFileList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lstFileList.FormattingEnabled = true;
             this.lstFileList.HorizontalScrollbar = true;
             this.lstFileList.Location = new System.Drawing.Point(689, 38);
@@ -244,7 +249,7 @@
             // tsmiExit
             // 
             this.tsmiExit.Name = "tsmiExit";
-            this.tsmiExit.Size = new System.Drawing.Size(152, 22);
+            this.tsmiExit.Size = new System.Drawing.Size(92, 22);
             this.tsmiExit.Text = "Exit";
             // 
             // helpToolStripMenuItem
@@ -258,7 +263,7 @@
             // tsmiAbout
             // 
             this.tsmiAbout.Name = "tsmiAbout";
-            this.tsmiAbout.Size = new System.Drawing.Size(152, 22);
+            this.tsmiAbout.Size = new System.Drawing.Size(107, 22);
             this.tsmiAbout.Text = "About";
             // 
             // MainForm

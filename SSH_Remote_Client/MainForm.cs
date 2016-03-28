@@ -27,10 +27,9 @@ namespace SSH_Remote_Client
         {
             InitializeComponent();
 
-            fldLogin.Text = "docent";
-            fldPass.Text = "123";
-            fldIP.Text = "192.168.2.37";
-            fldRemotePath.Text = "/home/docent";
+            fldLogin.Text = "root";
+            fldPass.Text = "kronites";
+            fldRemotePath.Text = "/usr/local/nginx";
 
             btnUploadFile.Click += BtnUploadFile_Click;
             btnSrchFiles.Click += BtnSrchFiles_Click;
