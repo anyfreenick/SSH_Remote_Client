@@ -1,6 +1,4 @@
 ﻿using System;
-using SSH_Remote_Client.BL;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace SSH_Remote_Client
@@ -14,6 +12,7 @@ namespace SSH_Remote_Client
         string RemotePath { get; }
         string SelectedItem { get; }
         void AddItemToList(object item);
+        void ClearListBox();
 
         //events
         event EventHandler FileUploadClick;
@@ -29,18 +28,18 @@ namespace SSH_Remote_Client
         {
             InitializeComponent();
 
-            fldLogin.Text = "docent";
-            fldPass.Text = "123";
-            fldIP.Text = "192.168.2.37";
-            fldRemotePath.Text = "/home/docent";
+            fldLogin.Text = "root";
+            fldPass.Text = "kronites";
+            fldRemotePath.Text = "/usr/local/nginx";
 
             btnUploadFile.Click += BtnUploadFile_Click;
             btnSrchFiles.Click += BtnSrchFiles_Click;
             lstFileList.MouseDoubleClick += LstFileList_MouseDoubleClick;
             tsmiExit.Click += TsmExit_Click;
             tsmiAbout.Click += TsmiAbout_Click;
+            fldRemotePath.KeyPress += FldRemotePath_KeyPress1;
         }
-        
+
         #region Проброс событий
         private void BtnUploadFile_Click(object sender, EventArgs e)
         {
@@ -105,6 +104,11 @@ namespace SSH_Remote_Client
             get { return lstFileList.SelectedItem.ToString(); }
         }
 
+        public void ClearListBox()
+        {
+            lstFileList.Items.Clear();
+        }
+
         public event EventHandler FileUploadClick;
         public event EventHandler SearchFilesClick;
         public event EventHandler ShowLogClick;
@@ -117,6 +121,14 @@ namespace SSH_Remote_Client
         {
             Close();
         }
-        #endregion
+
+        private void FldRemotePath_KeyPress1(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\r')
+            {
+                if (SearchFilesClick != null) SearchFilesClick(this, EventArgs.Empty);
+            }
+        }
+        #endregion        
     }
 }

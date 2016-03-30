@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SSH_Remote_Client.BL;
 
 namespace SSH_Remote_Client
@@ -31,6 +28,7 @@ namespace SSH_Remote_Client
                 return;
             connect();
             _manager.UploadFile("script.sh");
+            _manager.ExecuteCmdOnRemote("script.sh");
         }
 
         private void _view_ToolStripMenuAboutClick(object sender, EventArgs e)
@@ -54,6 +52,7 @@ namespace SSH_Remote_Client
         {
             if (!CheckCredsEntered())
                 return;
+            _view.ClearListBox();
             connect();
             List<string> fileList = _manager.GetFileList();
             fileList.Sort();
