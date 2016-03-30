@@ -28,10 +28,6 @@ namespace SSH_Remote_Client
         {
             InitializeComponent();
 
-            //fldLogin.Text = "root";
-            //fldPass.Text = "kronites";
-            //fldRemotePath.Text = "/usr/local/nginx";
-
             btnUploadFile.Click += BtnUploadFile_Click;
             btnSrchFiles.Click += BtnSrchFiles_Click;
             lstFileList.MouseDoubleClick += LstFileList_MouseDoubleClick;
