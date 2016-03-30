@@ -5,16 +5,19 @@ namespace SSH_Remote_Client
 {
     public interface IMainForm
     {
+        // properties
         string UserName { get; set; }
         string Passwd { get; set; }
         string HostName { get; set; }
         string Log { get; set; }
         string RemotePath { get; set; }
         string SelectedItem { get; }
+
+        // methods
         void AddItemToList(object item);
         void ClearListBox();
 
-        //events
+        // events
         event EventHandler FileUploadClick;
         event EventHandler SearchFilesClick;
         event EventHandler ShowLogClick;
