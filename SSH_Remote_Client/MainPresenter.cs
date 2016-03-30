@@ -9,12 +9,15 @@ namespace SSH_Remote_Client
         private readonly IMainForm _view;
         private readonly IFileManager _manager;
         private readonly IMessageService _messageService;
+        private readonly string _configFile = "config.ini";
 
         public MainPresenter(IMainForm view, IFileManager manager, IMessageService service)
         {
             _view = view;
             _manager = manager;
             _messageService = service;
+
+            setValues();
             
             _view.SearchFilesClick += _view_SearchFilesClick;
             _view.ListBoxItemDoubleClick += _view_ListBoxItemDoubleClick;
@@ -86,6 +89,15 @@ namespace SSH_Remote_Client
         {
             _manager.SetConnection(_view.HostName, _view.UserName, _view.Passwd);
             _manager.RemotePath = _view.RemotePath;
+        }
+
+        private void setValues()
+        {
+            string[] values = _manager.parseConfig(_configFile);
+            _view.UserName = values[0];
+            _view.Passwd = values[1];
+            _view.HostName = values[2];
+            _view.RemotePath = values[3];
         }
     }
 }

@@ -3,6 +3,7 @@ using Renci.SshNet;
 using Renci.SshNet.Sftp;
 using System.Collections.Generic;
 using System.Linq;
+using IniParser;
 
 namespace SSH_Remote_Client.BL
 {
@@ -15,6 +16,7 @@ namespace SSH_Remote_Client.BL
         void UploadFile(string filePath);
         void SetConnection(string host, string user, string pass);
         void ExecuteCmdOnRemote(string fileName);
+        string[] parseConfig(string file);
     }
 
     public class FileManager: IFileManager
@@ -98,6 +100,18 @@ namespace SSH_Remote_Client.BL
             {
                 new PasswordAuthenticationMethod(user, pass)
             });
-        }        
+        }
+
+        public string[] parseConfig(string file)
+        {
+            var parser = new FileIniDataParser();
+            var data = parser.ReadFile(file);
+            string[] values = new string[4];
+            values[0] = data["default_config"]["username"];
+            values[1] = data["default_config"]["password"];
+            values[2] = data["default_config"]["host"];
+            values[3] = data["default_config"]["remote_path"];
+            return values;
+        }
     }
 }

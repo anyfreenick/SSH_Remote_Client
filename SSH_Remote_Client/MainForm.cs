@@ -5,11 +5,11 @@ namespace SSH_Remote_Client
 {
     public interface IMainForm
     {
-        string UserName { get; }
-        string Passwd { get; }
-        string HostName { get; }
+        string UserName { get; set; }
+        string Passwd { get; set; }
+        string HostName { get; set; }
         string Log { get; set; }
-        string RemotePath { get; }
+        string RemotePath { get; set; }
         string SelectedItem { get; }
         void AddItemToList(object item);
         void ClearListBox();
@@ -28,9 +28,9 @@ namespace SSH_Remote_Client
         {
             InitializeComponent();
 
-            fldLogin.Text = "root";
-            fldPass.Text = "kronites";
-            fldRemotePath.Text = "/usr/local/nginx";
+            //fldLogin.Text = "root";
+            //fldPass.Text = "kronites";
+            //fldRemotePath.Text = "/usr/local/nginx";
 
             btnUploadFile.Click += BtnUploadFile_Click;
             btnSrchFiles.Click += BtnSrchFiles_Click;
@@ -71,16 +71,19 @@ namespace SSH_Remote_Client
         public string UserName
         {
             get { return fldLogin.Text; }
+            set { fldLogin.Text = value; }
         }
 
         public string Passwd
         {
             get { return fldPass.Text; }
+            set { fldPass.Text = value; }
         }
 
         public string HostName
         {
             get { return fldIP.Text; }
+            set { fldIP.Text = value; }
         }
 
         public string Log
@@ -92,6 +95,7 @@ namespace SSH_Remote_Client
         public string RemotePath
         {
             get { return fldRemotePath.Text; }
+            set { fldRemotePath.Text = value; }
         }
 
         public void AddItemToList(object item)
