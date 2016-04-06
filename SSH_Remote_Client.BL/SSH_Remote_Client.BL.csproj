@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="FileManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SettingsManager.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -99,7 +99,7 @@
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(121, 23);
             this.btnSave.TabIndex = 6;
-            this.btnSave.Text = "Save";
+            this.btnSave.Text = "Save profile";
             this.btnSave.UseVisualStyleBackColor = true;
             // 
             // btnExit

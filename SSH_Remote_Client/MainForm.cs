@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SSH_Remote_Client.BL;
+using System;
 using System.Windows.Forms;
 
 namespace SSH_Remote_Client
@@ -119,7 +120,7 @@ namespace SSH_Remote_Client
         public event EventHandler ToolStripMenuAboutClick;
         #endregion
 
-        #region Код саой формы
+        #region Код самой формы
         private void TsmExit_Click(object sender, EventArgs e)
         {
             Close();
@@ -137,7 +138,11 @@ namespace SSH_Remote_Client
         #region Временные костыли
         private void tsmiSettings_Click(object sender, EventArgs e)
         {
-            Form form2 = new SettingsForm();
+            SettingsForm form2 = new SettingsForm();
+            MessageService service = new MessageService();
+            SettingsManager man = new SettingsManager();
+
+            SettingsPresenter pres = new SettingsPresenter(form2, service, man);
             form2.Show();
         }
         #endregion
