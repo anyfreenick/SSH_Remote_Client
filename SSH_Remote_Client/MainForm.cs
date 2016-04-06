@@ -132,6 +132,14 @@ namespace SSH_Remote_Client
                 if (SearchFilesClick != null) SearchFilesClick(this, EventArgs.Empty);
             }
         }
-        #endregion        
+        #endregion
+
+        #region Временные костыли
+        private void tsmiSettings_Click(object sender, EventArgs e)
+        {
+            Form form2 = new SettingsForm();
+            form2.Show();
+        }
+        #endregion
     }
 }
