@@ -21,8 +21,19 @@ namespace SSH_Remote_Client
             
             _view.SearchFilesClick += _view_SearchFilesClick;
             _view.ListBoxItemDoubleClick += _view_ListBoxItemDoubleClick;
+            _view.ToolStripMenuSettingsClick += _view_ToolStripMenuSettingsClick;
             _view.ToolStripMenuAboutClick += _view_ToolStripMenuAboutClick;
             _view.FileUploadClick += _view_FileUploadClick;
+        }
+
+        private void _view_ToolStripMenuSettingsClick(object sender, EventArgs e)
+        {
+            SettingsForm form2 = new SettingsForm();
+            MessageService service = new MessageService();
+            SettingsManager man = new SettingsManager();
+
+            SettingsPresenter pres = new SettingsPresenter(form2, service, man);
+            form2.Show();
         }
 
         private void _view_FileUploadClick(object sender, EventArgs e)

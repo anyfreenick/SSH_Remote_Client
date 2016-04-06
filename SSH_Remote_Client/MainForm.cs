@@ -1,5 +1,4 @@
-﻿using SSH_Remote_Client.BL;
-using System;
+﻿using System;
 using System.Windows.Forms;
 
 namespace SSH_Remote_Client
@@ -24,6 +23,7 @@ namespace SSH_Remote_Client
         event EventHandler ShowLogClick;
         event EventHandler ListBoxItemDoubleClick;
         event EventHandler ToolStripMenuAboutClick;
+        event EventHandler ToolStripMenuSettingsClick;
     }
 
     public partial class MainForm : Form, IMainForm
@@ -36,6 +36,7 @@ namespace SSH_Remote_Client
             btnSrchFiles.Click += BtnSrchFiles_Click;
             lstFileList.MouseDoubleClick += LstFileList_MouseDoubleClick;
             tsmiExit.Click += TsmExit_Click;
+            tsmiSettings.Click += TsmiSettings_Click;
             tsmiAbout.Click += TsmiAbout_Click;
             fldRemotePath.KeyPress += FldRemotePath_KeyPress1;
         }
@@ -60,10 +61,23 @@ namespace SSH_Remote_Client
         {
             if (ListBoxItemDoubleClick != null) ListBoxItemDoubleClick(this, EventArgs.Empty);
         }
-        
+
+        private void TsmiSettings_Click(object sender, EventArgs e)
+        {
+            if (ToolStripMenuSettingsClick != null) ToolStripMenuSettingsClick(this, EventArgs.Empty);
+        }
+
         private void TsmiAbout_Click(object sender, EventArgs e)
         {
             if (ToolStripMenuAboutClick != null) ToolStripMenuAboutClick(this, EventArgs.Empty);
+        }
+
+        private void FldRemotePath_KeyPress1(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\r')
+            {
+                if (SearchFilesClick != null) SearchFilesClick(this, EventArgs.Empty);
+            }
         }
         #endregion
 
@@ -118,33 +132,17 @@ namespace SSH_Remote_Client
         public event EventHandler ShowLogClick;
         public event EventHandler ListBoxItemDoubleClick;
         public event EventHandler ToolStripMenuAboutClick;
+        public event EventHandler ToolStripMenuSettingsClick;
         #endregion
 
         #region Код самой формы
         private void TsmExit_Click(object sender, EventArgs e)
         {
             Close();
-        }
-
-        private void FldRemotePath_KeyPress1(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == '\r')
-            {
-                if (SearchFilesClick != null) SearchFilesClick(this, EventArgs.Empty);
-            }
-        }
+        }        
         #endregion
 
         #region Временные костыли
-        private void tsmiSettings_Click(object sender, EventArgs e)
-        {
-            SettingsForm form2 = new SettingsForm();
-            MessageService service = new MessageService();
-            SettingsManager man = new SettingsManager();
-
-            SettingsPresenter pres = new SettingsPresenter(form2, service, man);
-            form2.Show();
-        }
         #endregion
     }
 }

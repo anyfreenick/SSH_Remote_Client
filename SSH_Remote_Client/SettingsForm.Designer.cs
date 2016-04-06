@@ -40,6 +40,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnNew = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.fldRemotePath = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // fldUserName
@@ -104,9 +106,9 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(12, 129);
+            this.btnExit.Location = new System.Drawing.Point(118, 138);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(75, 23);
+            this.btnExit.Size = new System.Drawing.Size(121, 23);
             this.btnExit.TabIndex = 7;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -118,6 +120,7 @@
             this.cmbProfile.Location = new System.Drawing.Point(118, 24);
             this.cmbProfile.Name = "cmbProfile";
             this.cmbProfile.Size = new System.Drawing.Size(121, 21);
+            this.cmbProfile.Sorted = true;
             this.cmbProfile.TabIndex = 3;
             // 
             // label4
@@ -147,11 +150,30 @@
             this.btnEdit.Text = "Edit profile";
             this.btnEdit.UseVisualStyleBackColor = true;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 126);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(68, 13);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Remote path";
+            // 
+            // fldRemotePath
+            // 
+            this.fldRemotePath.Location = new System.Drawing.Point(12, 140);
+            this.fldRemotePath.Name = "fldRemotePath";
+            this.fldRemotePath.ReadOnly = true;
+            this.fldRemotePath.Size = new System.Drawing.Size(100, 20);
+            this.fldRemotePath.TabIndex = 13;
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(252, 163);
+            this.ClientSize = new System.Drawing.Size(247, 173);
+            this.Controls.Add(this.fldRemotePath);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.label4);
@@ -185,5 +207,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox fldRemotePath;
     }
 }

@@ -268,7 +268,6 @@
             this.tsmiSettings.Name = "tsmiSettings";
             this.tsmiSettings.Size = new System.Drawing.Size(116, 22);
             this.tsmiSettings.Text = "Settings";
-            this.tsmiSettings.Click += new System.EventHandler(this.tsmiSettings_Click);
             // 
             // helpToolStripMenuItem
             // 
