@@ -15,6 +15,7 @@ namespace SSH_Remote_Client
         // methods
         void AddItemToList(object item);
         void ClearListBox();
+        void ClearProfiles();
         void AddProfile(string profileName);
 
         // events
@@ -24,6 +25,7 @@ namespace SSH_Remote_Client
         event EventHandler ToolStripMenuAboutClick;
         event EventHandler ToolStripMenuSettingsClick;
         event EventHandler SelectedProfileChanged;
+        event EventHandler ProfileClick;
     }
 
     public partial class MainForm : Form, IMainForm
@@ -40,8 +42,9 @@ namespace SSH_Remote_Client
             tsmiExit.Click += TsmiExit_Click;
             fldRemotePath.KeyPress += FldRemotePath_KeyPress1;
             cmbProfile.SelectedIndexChanged += CmbProfile_SelectedIndexChanged;
+            cmbProfile.Click += CmbProfile_Click;
         }
-
+        
         #region Проброс событий
         private void BtnUploadFile_Click(object sender, EventArgs e)
         {
@@ -79,6 +82,11 @@ namespace SSH_Remote_Client
         private void CmbProfile_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (SelectedProfileChanged != null) SelectedProfileChanged(this, EventArgs.Empty);
+        }
+
+        private void CmbProfile_Click(object sender, EventArgs e)
+        {
+            if (ProfileClick != null) ProfileClick(this, EventArgs.Empty);
         }
         #endregion
 
@@ -126,12 +134,18 @@ namespace SSH_Remote_Client
             cmbProfile.Items.Add(profileName);
         }
 
+        public void ClearProfiles()
+        {
+            cmbProfile.Items.Clear();
+        }
+
         public event EventHandler FileUploadClick;
         public event EventHandler SearchFilesClick;
         public event EventHandler ListBoxItemDoubleClick;
         public event EventHandler ToolStripMenuAboutClick;
         public event EventHandler ToolStripMenuSettingsClick;
         public event EventHandler SelectedProfileChanged;
+        public event EventHandler ProfileClick;
         #endregion
 
         #region Код самой формы

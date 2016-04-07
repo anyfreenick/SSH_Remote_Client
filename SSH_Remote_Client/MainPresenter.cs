@@ -26,8 +26,9 @@ namespace SSH_Remote_Client
             _view.ToolStripMenuSettingsClick += _view_ToolStripMenuSettingsClick;
             _view.ToolStripMenuAboutClick += _view_ToolStripMenuAboutClick;            
             _view.SelectedProfileChanged += _view_SelectedProfileChanged;
+            _view.ProfileClick += _view_ProfileClick;
         }
-
+        
         #region Обработка событий
         // Клик по кнопке Upload File
         private void _view_FileUploadClick(object sender, EventArgs e)
@@ -80,6 +81,13 @@ namespace SSH_Remote_Client
         private void _view_SelectedProfileChanged(object sender, EventArgs e)
         {
             _view.RemotePath = _manager.SetPath(_view.Profile, _configFile);
+        }
+
+        // Клик по комбобоксу
+        private void _view_ProfileClick(object sender, EventArgs e)
+        {
+            _view.ClearProfiles();
+            LoadProfiles(_configFile);
         }
         #endregion
 

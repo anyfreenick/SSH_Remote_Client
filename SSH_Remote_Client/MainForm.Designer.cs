@@ -33,6 +33,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cmbProfile = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.fldRemotePath = new System.Windows.Forms.TextBox();
             this.btnSrchFiles = new System.Windows.Forms.Button();
@@ -45,8 +47,6 @@
             this.tsmiSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmbProfile = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -111,6 +111,25 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "SSH";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(0, 22);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(36, 13);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "Profile";
+            // 
+            // cmbProfile
+            // 
+            this.cmbProfile.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbProfile.FormattingEnabled = true;
+            this.cmbProfile.Location = new System.Drawing.Point(3, 38);
+            this.cmbProfile.Name = "cmbProfile";
+            this.cmbProfile.Size = new System.Drawing.Size(121, 21);
+            this.cmbProfile.Sorted = true;
+            this.cmbProfile.TabIndex = 16;
             // 
             // label5
             // 
@@ -214,24 +233,6 @@
             this.tsmiAbout.Name = "tsmiAbout";
             this.tsmiAbout.Size = new System.Drawing.Size(107, 22);
             this.tsmiAbout.Text = "About";
-            // 
-            // cmbProfile
-            // 
-            this.cmbProfile.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbProfile.FormattingEnabled = true;
-            this.cmbProfile.Location = new System.Drawing.Point(3, 38);
-            this.cmbProfile.Name = "cmbProfile";
-            this.cmbProfile.Size = new System.Drawing.Size(121, 21);
-            this.cmbProfile.TabIndex = 16;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(0, 22);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(36, 13);
-            this.label6.TabIndex = 17;
-            this.label6.Text = "Profile";
             // 
             // MainForm
             // 
