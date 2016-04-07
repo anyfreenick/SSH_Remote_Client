@@ -35,11 +35,11 @@ namespace SSH_Remote_Client
             btnUploadFile.Click += BtnUploadFile_Click;
             btnSrchFiles.Click += BtnSrchFiles_Click;
             lstFileList.MouseDoubleClick += LstFileList_MouseDoubleClick;
-            tsmiExit.Click += TsmExit_Click;
             tsmiSettings.Click += TsmiSettings_Click;
             tsmiAbout.Click += TsmiAbout_Click;
+            tsmiExit.Click += TsmiExit_Click;
             fldRemotePath.KeyPress += FldRemotePath_KeyPress1;
-        }
+        }        
 
         #region Проброс событий
         private void BtnUploadFile_Click(object sender, EventArgs e)
@@ -136,10 +136,10 @@ namespace SSH_Remote_Client
         #endregion
 
         #region Код самой формы
-        private void TsmExit_Click(object sender, EventArgs e)
+        private void TsmiExit_Click(object sender, EventArgs e)
         {
             Close();
-        }        
+        }
         #endregion
 
         #region Временные костыли

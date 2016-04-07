@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SSH_Remote_Client
@@ -28,12 +21,14 @@ namespace SSH_Remote_Client
         // Методы
         void AddItemToProfileSelector(string item);
         void ClearProfiles();
+        void Close();
 
         // События
         event EventHandler NewProfileButtonClick;
-        event EventHandler EditProfileButtonClick;
+        event EventHandler DeleteProfileButtonClick;
         event EventHandler SaveProfileButtonClick;
         event EventHandler SelectedProfileChanged;
+        event EventHandler ExitButtonClick;
     }
 
     public partial class SettingsForm : Form, ISettingsForm
@@ -41,14 +36,10 @@ namespace SSH_Remote_Client
         public SettingsForm()
         {
             InitializeComponent();
-            // убрать
-            fldIP.Text = "sadasd";
-            fldPasswd.Text = "gdfgdf";
-            fldRemotePath.Text = "sdpoookpodf";
-            fldUserName.Text = "sadasdagdfgdf";
+            cmbProfile.SelectedIndex = -1;
 
             btnNew.Click += BtnNew_Click;
-            btnEdit.Click += BtnEdit_Click;
+            btnDelete.Click += BtnDelete_Click;
             btnSave.Click += BtnSave_Click;
             btnExit.Click += BtnExit_Click;
             cmbProfile.SelectedValueChanged += CmbProfile_SelectedValueChanged;
@@ -60,14 +51,19 @@ namespace SSH_Remote_Client
             if (NewProfileButtonClick != null) NewProfileButtonClick(this, EventArgs.Empty);
         }
 
-        private void BtnEdit_Click(object sender, EventArgs e)
+        private void BtnDelete_Click(object sender, EventArgs e)
         {
-            if (EditProfileButtonClick != null) EditProfileButtonClick(this, EventArgs.Empty);
+            if (DeleteProfileButtonClick != null) DeleteProfileButtonClick(this, EventArgs.Empty);
         }
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
             if (SaveProfileButtonClick != null) SaveProfileButtonClick(this, EventArgs.Empty);
+        }
+
+        private void BtnExit_Click(object sender, EventArgs e)
+        {
+            if (ExitButtonClick != null) ExitButtonClick(this, EventArgs.Empty);
         }
 
         private void CmbProfile_SelectedValueChanged(object sender, EventArgs e)
@@ -153,16 +149,13 @@ namespace SSH_Remote_Client
         }
 
         public event EventHandler NewProfileButtonClick;
-        public event EventHandler EditProfileButtonClick;
+        public event EventHandler DeleteProfileButtonClick;
         public event EventHandler SaveProfileButtonClick;
         public event EventHandler SelectedProfileChanged;
+        public event EventHandler ExitButtonClick;
         #endregion
 
         #region Код самой формы
-        private void BtnExit_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
         #endregion
     }
 }

@@ -7,6 +7,7 @@ namespace SSH_Remote_Client
         void ShowMessage(string message);
         void ShowExclamation(string exclamation);
         void ShowError(string error);
+        bool ShowConfirmation(string confirmation);
     }
 
     class MessageService: IMessageService
@@ -24,6 +25,16 @@ namespace SSH_Remote_Client
         public void ShowError(string error)
         {
             MessageBox.Show(error, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public bool ShowConfirmation(string confirmation)
+        {
+            DialogResult dlgRes = MessageBox.Show(confirmation, "Подтверждение", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dlgRes == DialogResult.Yes)
+                return true;
+            else if (dlgRes == DialogResult.No)
+                return false;
+            return false;
         }
     }
 }
