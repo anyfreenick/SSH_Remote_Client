@@ -13,10 +13,11 @@ namespace SSH_Remote_Client.BL
 
         List<string> GetFileList();
         string GetFileContent(string fileName);
+        string SetPath(string sectionName, string configFile);
         void UploadFile(string filePath);
-        void SetConnection(string host, string user, string pass);
+        void SetConnection(string sectionName, string configFile);
         void ExecuteCmdOnRemote(string fileName);
-        string[] parseConfig(string file);
+        List<string> LoadSections(string filePath);
     }
 
     public class FileManager: IFileManager
@@ -68,6 +69,13 @@ namespace SSH_Remote_Client.BL
             return content;
         }
 
+        public string SetPath(string sectionName, string configFile)
+        {
+            var parser = new FileIniDataParser();
+            var data = parser.ReadFile(configFile);
+            return data[sectionName]["remote_path"];
+        }
+
         /// <summary>
         /// Загружает файл на удаленный сервер, а каталог указанный в свойстве RemotePath
         /// </summary>
@@ -94,24 +102,25 @@ namespace SSH_Remote_Client.BL
         }
         #endregion
 
-        public void SetConnection(string host, string user, string pass)
-        {
-            _connection = new ConnectionInfo(host, 22, user, new AuthenticationMethod[]
-            {
-                new PasswordAuthenticationMethod(user, pass)
-            });
-        }
-
-        public string[] parseConfig(string file)
+        public void SetConnection(string sectionName, string configFile)
         {
             var parser = new FileIniDataParser();
-            var data = parser.ReadFile(file);
-            string[] values = new string[4];
-            values[0] = data["default_config"]["username"];
-            values[1] = data["default_config"]["password"];
-            values[2] = data["default_config"]["host"];
-            values[3] = data["default_config"]["remote_path"];
-            return values;
+            var data = parser.ReadFile(configFile);
+            _connection = new ConnectionInfo(data[sectionName]["host"], 22, data[sectionName]["username"], new AuthenticationMethod[]
+            {
+                new PasswordAuthenticationMethod(data[sectionName]["username"], data[sectionName]["password"])
+            });
+            _remotePath = data[sectionName]["remote_path"];
+        }
+        
+        public List<string> LoadSections(string filePath)
+        {
+            var parser = new FileIniDataParser();
+            var parsedData = parser.ReadFile(filePath);
+            List<string> result = new List<string>();
+            foreach (var section in parsedData.Sections)
+                result.Add(section.SectionName);
+            return result;
         }
     }
 }

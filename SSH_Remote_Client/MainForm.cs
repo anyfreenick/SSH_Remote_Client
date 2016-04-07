@@ -6,24 +6,24 @@ namespace SSH_Remote_Client
     public interface IMainForm
     {
         // properties
-        string UserName { get; set; }
-        string Passwd { get; set; }
-        string HostName { get; set; }
         string Log { get; set; }
         string RemotePath { get; set; }
         string SelectedItem { get; }
+        string Profile { get; }
+        int SelectedProfile { get; set; }
 
         // methods
         void AddItemToList(object item);
         void ClearListBox();
+        void AddProfile(string profileName);
 
         // events
         event EventHandler FileUploadClick;
         event EventHandler SearchFilesClick;
-        event EventHandler ShowLogClick;
         event EventHandler ListBoxItemDoubleClick;
         event EventHandler ToolStripMenuAboutClick;
         event EventHandler ToolStripMenuSettingsClick;
+        event EventHandler SelectedProfileChanged;
     }
 
     public partial class MainForm : Form, IMainForm
@@ -39,7 +39,8 @@ namespace SSH_Remote_Client
             tsmiAbout.Click += TsmiAbout_Click;
             tsmiExit.Click += TsmiExit_Click;
             fldRemotePath.KeyPress += FldRemotePath_KeyPress1;
-        }        
+            cmbProfile.SelectedIndexChanged += CmbProfile_SelectedIndexChanged;
+        }
 
         #region Проброс событий
         private void BtnUploadFile_Click(object sender, EventArgs e)
@@ -50,11 +51,6 @@ namespace SSH_Remote_Client
         private void BtnSrchFiles_Click(object sender, EventArgs e)
         {
             if (SearchFilesClick != null) SearchFilesClick(this, EventArgs.Empty);
-        }
-
-        private void BtnGetLog_Click(object sender, EventArgs e)
-        {
-            if (ShowLogClick != null) ShowLogClick(this, EventArgs.Empty);
         }
 
         private void LstFileList_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -79,27 +75,14 @@ namespace SSH_Remote_Client
                 if (SearchFilesClick != null) SearchFilesClick(this, EventArgs.Empty);
             }
         }
+
+        private void CmbProfile_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (SelectedProfileChanged != null) SelectedProfileChanged(this, EventArgs.Empty);
+        }
         #endregion
 
         #region Реализация интерфейса IMainForm
-        public string UserName
-        {
-            get { return fldLogin.Text; }
-            set { fldLogin.Text = value; }
-        }
-
-        public string Passwd
-        {
-            get { return fldPass.Text; }
-            set { fldPass.Text = value; }
-        }
-
-        public string HostName
-        {
-            get { return fldIP.Text; }
-            set { fldIP.Text = value; }
-        }
-
         public string Log
         {
             get { return fldLog.Text; }
@@ -122,17 +105,33 @@ namespace SSH_Remote_Client
             get { return lstFileList.SelectedItem.ToString(); }
         }
 
+        public string Profile
+        {
+            get { return cmbProfile.Text; }
+        }
+
+        public int SelectedProfile
+        {
+            get { return cmbProfile.SelectedIndex; }
+            set { cmbProfile.SelectedIndex = value; }
+        }
+
         public void ClearListBox()
         {
             lstFileList.Items.Clear();
         }
 
+        public void AddProfile(string profileName)
+        {
+            cmbProfile.Items.Add(profileName);
+        }
+
         public event EventHandler FileUploadClick;
         public event EventHandler SearchFilesClick;
-        public event EventHandler ShowLogClick;
         public event EventHandler ListBoxItemDoubleClick;
         public event EventHandler ToolStripMenuAboutClick;
         public event EventHandler ToolStripMenuSettingsClick;
+        public event EventHandler SelectedProfileChanged;
         #endregion
 
         #region Код самой формы

@@ -17,15 +17,49 @@ namespace SSH_Remote_Client
             _manager = manager;
             _messageService = service;
 
-            setValues();
-            
+            LoadProfiles(_configFile);
+            _view.RemotePath = _manager.SetPath(_view.Profile, _configFile);
+
+            _view.FileUploadClick += _view_FileUploadClick;
             _view.SearchFilesClick += _view_SearchFilesClick;
             _view.ListBoxItemDoubleClick += _view_ListBoxItemDoubleClick;
             _view.ToolStripMenuSettingsClick += _view_ToolStripMenuSettingsClick;
-            _view.ToolStripMenuAboutClick += _view_ToolStripMenuAboutClick;
-            _view.FileUploadClick += _view_FileUploadClick;
+            _view.ToolStripMenuAboutClick += _view_ToolStripMenuAboutClick;            
+            _view.SelectedProfileChanged += _view_SelectedProfileChanged;
         }
 
+        #region Обработка событий
+        // Клик по кнопке Upload File
+        private void _view_FileUploadClick(object sender, EventArgs e)
+        {
+            connect();
+            _manager.UploadFile("script.sh");
+            _manager.ExecuteCmdOnRemote("script.sh");
+        }
+
+        // Клик по кнопке Search Files
+        private void _view_SearchFilesClick(object sender, EventArgs e)
+        {
+            _view.ClearListBox();
+            connect();
+            List<string> fileList = _manager.GetFileList();
+            fileList.Sort();
+            foreach (string file in fileList)
+                _view.AddItemToList(file);
+        }
+
+        // Двойной клик по имени файла в списке
+        private void _view_ListBoxItemDoubleClick(object sender, EventArgs e)
+        {
+            connect();
+            string log = _manager.GetFileContent(_view.SelectedItem);
+            if (log != "")
+                _view.Log = log;
+            else
+                _messageService.ShowMessage("File is empty");
+        }
+
+        // Клик по элементу меню Tools --> Settings
         private void _view_ToolStripMenuSettingsClick(object sender, EventArgs e)
         {
             SettingsForm form2 = new SettingsForm();
@@ -36,79 +70,30 @@ namespace SSH_Remote_Client
             form2.Show();
         }
 
-        private void _view_FileUploadClick(object sender, EventArgs e)
-        {
-            if (!CheckCredsEntered())
-                return;
-            connect();
-            _manager.UploadFile("script.sh");
-            _manager.ExecuteCmdOnRemote("script.sh");
-        }
-
+        // Клик по элементу меню Tools --> About
         private void _view_ToolStripMenuAboutClick(object sender, EventArgs e)
         {
             _messageService.ShowMessage("Надо написать какой-нибудь бред!!!");
         }
 
-        private void _view_ListBoxItemDoubleClick(object sender, EventArgs e)
+        // Выбор элемента в списке Profile
+        private void _view_SelectedProfileChanged(object sender, EventArgs e)
         {
-            if (!CheckCredsEntered())
-                return;
-            connect();
-            string log = _manager.GetFileContent(_view.SelectedItem);
-            if (log != "")
-                _view.Log = log;                         
-            else
-                _messageService.ShowMessage("Log file is empty");
+            _view.RemotePath = _manager.SetPath(_view.Profile, _configFile);
         }
-
-        private void _view_SearchFilesClick(object sender, EventArgs e)
-        {
-            if (!CheckCredsEntered())
-                return;
-            _view.ClearListBox();
-            connect();
-            List<string> fileList = _manager.GetFileList();
-            fileList.Sort();
-            foreach (string file in fileList)
-                _view.AddItemToList(file);
-        }
-
-        private bool CheckCredsEntered()
-        {
-            if (_view.HostName == "")
-            {
-                _messageService.ShowError("Не заполнено поле IP или имя сервера");
-                return false;
-            }
-                
-            if (_view.UserName == "")
-            {
-                _messageService.ShowError("Не введено имя пользователя");
-                return false;
-            }
-                
-            if (_view.Passwd == "")
-            {
-                _messageService.ShowError("Не введен пароль");
-                return false;
-            }
-            return true;
-        }
+        #endregion
 
         private void connect()
         {
-            _manager.SetConnection(_view.HostName, _view.UserName, _view.Passwd);
+            _manager.SetConnection(_view.Profile, _configFile);
             _manager.RemotePath = _view.RemotePath;
         }
-
-        private void setValues()
+        
+        private void LoadProfiles(string filePath)
         {
-            string[] values = _manager.parseConfig(_configFile);
-            _view.UserName = values[0];
-            _view.Passwd = values[1];
-            _view.HostName = values[2];
-            _view.RemotePath = values[3];
+            foreach (string section in _manager.LoadSections(filePath))
+                _view.AddProfile(section);
+            _view.SelectedProfile = 0;
         }
     }
 }

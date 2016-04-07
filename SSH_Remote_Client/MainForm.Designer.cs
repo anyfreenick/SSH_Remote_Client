@@ -28,12 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.fldLogin = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.fldPass = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.fldIP = new System.Windows.Forms.TextBox();
             this.btnUploadFile = new System.Windows.Forms.Button();
             this.fldLog = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -43,7 +37,6 @@
             this.fldRemotePath = new System.Windows.Forms.TextBox();
             this.btnSrchFiles = new System.Windows.Forms.Button();
             this.lstFileList = new System.Windows.Forms.ListBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,65 +45,18 @@
             this.tsmiSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmbProfile = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Username";
-            // 
-            // fldLogin
-            // 
-            this.fldLogin.Location = new System.Drawing.Point(6, 32);
-            this.fldLogin.Name = "fldLogin";
-            this.fldLogin.Size = new System.Drawing.Size(100, 20);
-            this.fldLogin.TabIndex = 1;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 55);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Password";
-            // 
-            // fldPass
-            // 
-            this.fldPass.Location = new System.Drawing.Point(6, 71);
-            this.fldPass.Name = "fldPass";
-            this.fldPass.Size = new System.Drawing.Size(100, 20);
-            this.fldPass.TabIndex = 3;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 94);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(92, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Server name or IP";
-            // 
-            // fldIP
-            // 
-            this.fldIP.Location = new System.Drawing.Point(6, 110);
-            this.fldIP.Name = "fldIP";
-            this.fldIP.Size = new System.Drawing.Size(100, 20);
-            this.fldIP.TabIndex = 5;
-            // 
             // btnUploadFile
             // 
-            this.btnUploadFile.Location = new System.Drawing.Point(6, 136);
+            this.btnUploadFile.Location = new System.Drawing.Point(3, 65);
             this.btnUploadFile.Name = "btnUploadFile";
-            this.btnUploadFile.Size = new System.Drawing.Size(100, 23);
+            this.btnUploadFile.Size = new System.Drawing.Size(121, 23);
             this.btnUploadFile.TabIndex = 6;
             this.btnUploadFile.Text = "Upload file";
             this.btnUploadFile.UseVisualStyleBackColor = true;
@@ -149,11 +95,13 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label6);
+            this.tabPage1.Controls.Add(this.cmbProfile);
             this.tabPage1.Controls.Add(this.label5);
+            this.tabPage1.Controls.Add(this.btnUploadFile);
             this.tabPage1.Controls.Add(this.fldRemotePath);
             this.tabPage1.Controls.Add(this.btnSrchFiles);
             this.tabPage1.Controls.Add(this.lstFileList);
-            this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Controls.Add(this.fldLog);
             this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
@@ -202,22 +150,6 @@
             this.lstFileList.Name = "lstFileList";
             this.lstFileList.Size = new System.Drawing.Size(215, 472);
             this.lstFileList.TabIndex = 12;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.fldLogin);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.btnUploadFile);
-            this.groupBox1.Controls.Add(this.fldPass);
-            this.groupBox1.Controls.Add(this.fldIP);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(8, 6);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(116, 168);
-            this.groupBox1.TabIndex = 11;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Server";
             // 
             // tabPage2
             // 
@@ -283,6 +215,24 @@
             this.tsmiAbout.Size = new System.Drawing.Size(107, 22);
             this.tsmiAbout.Text = "About";
             // 
+            // cmbProfile
+            // 
+            this.cmbProfile.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbProfile.FormattingEnabled = true;
+            this.cmbProfile.Location = new System.Drawing.Point(3, 38);
+            this.cmbProfile.Name = "cmbProfile";
+            this.cmbProfile.Size = new System.Drawing.Size(121, 21);
+            this.cmbProfile.TabIndex = 16;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(0, 22);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(36, 13);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "Profile";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -296,8 +246,6 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -306,20 +254,12 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox fldLogin;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox fldPass;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox fldIP;
         private System.Windows.Forms.Button btnUploadFile;
         private System.Windows.Forms.TextBox fldLog;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.Button btnSrchFiles;
         private System.Windows.Forms.ListBox lstFileList;
@@ -331,6 +271,8 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiAbout;
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tsmiSettings;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cmbProfile;
     }
 }
 
