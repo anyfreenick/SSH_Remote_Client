@@ -100,6 +100,16 @@ namespace SSH_Remote_Client.BL
             foreach (var cmd in cmds)
                 cmd.Execute();            
         }
+
+        public List<string> LoadSections(string filePath)
+        {
+            var parser = new FileIniDataParser();
+            var parsedData = parser.ReadFile(filePath);
+            List<string> result = new List<string>();
+            foreach (var section in parsedData.Sections)
+                result.Add(section.SectionName);
+            return result;
+        }
         #endregion
 
         public void SetConnection(string sectionName, string configFile)
@@ -111,16 +121,6 @@ namespace SSH_Remote_Client.BL
                 new PasswordAuthenticationMethod(data[sectionName]["username"], data[sectionName]["password"])
             });
             _remotePath = data[sectionName]["remote_path"];
-        }
-        
-        public List<string> LoadSections(string filePath)
-        {
-            var parser = new FileIniDataParser();
-            var parsedData = parser.ReadFile(filePath);
-            List<string> result = new List<string>();
-            foreach (var section in parsedData.Sections)
-                result.Add(section.SectionName);
-            return result;
-        }
+        }        
     }
 }
