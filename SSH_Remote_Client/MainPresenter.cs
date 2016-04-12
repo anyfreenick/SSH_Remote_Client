@@ -91,11 +91,13 @@ namespace SSH_Remote_Client
             LoadProfiles(_configFile);
         }
 
-        // Клик по кнопке Install swagger
+        // Клик по кнопке Install swagger. ПЕРЕДЕЛАТЬ!!!
         private void _view_InstallButtonClick(object sender, EventArgs e)
         {
             _view.ProgressBarVisible = true;
             _view.LabelProgressVisible = true;
+            if (_view.CurrentProgress < 100)
+                _view.IncreaseInstallationProgress(10);
         }
         #endregion
 

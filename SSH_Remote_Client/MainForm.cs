@@ -13,12 +13,14 @@ namespace SSH_Remote_Client
         int SelectedProfile { get; set; }
         bool ProgressBarVisible { get; set; }
         bool LabelProgressVisible { get; set; }
+        int CurrentProgress { get; }
 
         // methods
         void AddItemToList(object item);
         void ClearListBox();
         void ClearProfiles();
         void AddProfile(string profileName);
+        void IncreaseInstallationProgress(int percent);
 
         // events
         event EventHandler FileUploadClick;
@@ -131,7 +133,7 @@ namespace SSH_Remote_Client
         {
             get { return cmbProfile.SelectedIndex; }
             set { cmbProfile.SelectedIndex = value; }
-        }
+        }        
 
         public void ClearListBox()
         {
@@ -148,10 +150,20 @@ namespace SSH_Remote_Client
             cmbProfile.Items.Clear();
         }
 
+        public void IncreaseInstallationProgress(int percent)
+        {
+            pbInstall.Value += percent;
+        }
+
         public bool ProgressBarVisible
         {
             get { return pbInstall.Visible; }
             set { pbInstall.Visible = value; }
+        }
+
+        public int CurrentProgress
+        {
+            get { return pbInstall.Value; }
         }
 
         public bool LabelProgressVisible
