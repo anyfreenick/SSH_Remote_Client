@@ -27,8 +27,9 @@ namespace SSH_Remote_Client
             _view.ToolStripMenuAboutClick += _view_ToolStripMenuAboutClick;            
             _view.SelectedProfileChanged += _view_SelectedProfileChanged;
             _view.ProfileClick += _view_ProfileClick;
-        }
-        
+            _view.InstallButtonClick += _view_InstallButtonClick;
+        }        
+
         #region Обработка событий
         // Клик по кнопке Upload File
         private void _view_FileUploadClick(object sender, EventArgs e)
@@ -88,6 +89,13 @@ namespace SSH_Remote_Client
         {
             _view.ClearProfiles();
             LoadProfiles(_configFile);
+        }
+
+        // Клик по кнопке Install swagger
+        private void _view_InstallButtonClick(object sender, EventArgs e)
+        {
+            _view.ProgressBarVisible = true;
+            _view.LabelProgressVisible = true;
         }
         #endregion
 

@@ -47,9 +47,14 @@
             this.tsmiSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.pbInstall = new System.Windows.Forms.ProgressBar();
+            this.lblProgress = new System.Windows.Forms.Label();
+            this.btnInstall = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnUploadFile
@@ -85,6 +90,7 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 24);
@@ -234,6 +240,47 @@
             this.tsmiAbout.Size = new System.Drawing.Size(107, 22);
             this.tsmiAbout.Text = "About";
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.btnInstall);
+            this.tabPage3.Controls.Add(this.lblProgress);
+            this.tabPage3.Controls.Add(this.pbInstall);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(910, 543);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "InstallSwagger";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // pbInstall
+            // 
+            this.pbInstall.Location = new System.Drawing.Point(8, 117);
+            this.pbInstall.Name = "pbInstall";
+            this.pbInstall.Size = new System.Drawing.Size(894, 23);
+            this.pbInstall.Step = 1;
+            this.pbInstall.TabIndex = 0;
+            this.pbInstall.Visible = false;
+            // 
+            // lblProgress
+            // 
+            this.lblProgress.AutoSize = true;
+            this.lblProgress.Location = new System.Drawing.Point(5, 101);
+            this.lblProgress.Name = "lblProgress";
+            this.lblProgress.Size = new System.Drawing.Size(48, 13);
+            this.lblProgress.TabIndex = 1;
+            this.lblProgress.Text = "Progress";
+            this.lblProgress.Visible = false;
+            // 
+            // btnInstall
+            // 
+            this.btnInstall.Location = new System.Drawing.Point(8, 6);
+            this.btnInstall.Name = "btnInstall";
+            this.btnInstall.Size = new System.Drawing.Size(104, 23);
+            this.btnInstall.TabIndex = 2;
+            this.btnInstall.Text = "Install swagger";
+            this.btnInstall.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -249,6 +296,8 @@
             this.tabPage1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -274,6 +323,10 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiSettings;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cmbProfile;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Label lblProgress;
+        private System.Windows.Forms.ProgressBar pbInstall;
+        private System.Windows.Forms.Button btnInstall;
     }
 }
 

@@ -11,6 +11,8 @@ namespace SSH_Remote_Client
         string SelectedItem { get; }
         string Profile { get; }
         int SelectedProfile { get; set; }
+        bool ProgressBarVisible { get; set; }
+        bool LabelProgressVisible { get; set; }
 
         // methods
         void AddItemToList(object item);
@@ -26,6 +28,7 @@ namespace SSH_Remote_Client
         event EventHandler ToolStripMenuSettingsClick;
         event EventHandler SelectedProfileChanged;
         event EventHandler ProfileClick;
+        event EventHandler InstallButtonClick;
     }
 
     public partial class MainForm : Form, IMainForm
@@ -43,6 +46,7 @@ namespace SSH_Remote_Client
             fldRemotePath.KeyPress += FldRemotePath_KeyPress1;
             cmbProfile.SelectedIndexChanged += CmbProfile_SelectedIndexChanged;
             cmbProfile.Click += CmbProfile_Click;
+            btnInstall.Click += BtnInstall_Click;
         }
         
         #region Проброс событий
@@ -87,6 +91,11 @@ namespace SSH_Remote_Client
         private void CmbProfile_Click(object sender, EventArgs e)
         {
             if (ProfileClick != null) ProfileClick(this, EventArgs.Empty);
+        }
+
+        private void BtnInstall_Click(object sender, EventArgs e)
+        {
+            if (InstallButtonClick != null) InstallButtonClick(this, EventArgs.Empty);
         }
         #endregion
 
@@ -139,6 +148,18 @@ namespace SSH_Remote_Client
             cmbProfile.Items.Clear();
         }
 
+        public bool ProgressBarVisible
+        {
+            get { return pbInstall.Visible; }
+            set { pbInstall.Visible = value; }
+        }
+
+        public bool LabelProgressVisible
+        {
+            get { return lblProgress.Visible; }
+            set { lblProgress.Visible = value; }
+        }
+
         public event EventHandler FileUploadClick;
         public event EventHandler SearchFilesClick;
         public event EventHandler ListBoxItemDoubleClick;
@@ -146,6 +167,7 @@ namespace SSH_Remote_Client
         public event EventHandler ToolStripMenuSettingsClick;
         public event EventHandler SelectedProfileChanged;
         public event EventHandler ProfileClick;
+        public event EventHandler InstallButtonClick;
         #endregion
 
         #region Код самой формы
