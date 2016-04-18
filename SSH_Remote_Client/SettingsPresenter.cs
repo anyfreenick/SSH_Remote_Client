@@ -46,11 +46,16 @@ namespace SSH_Remote_Client
 
         private void _view_DeleteProfileButtonClick(object sender, EventArgs e)
         {
-            _manager.RemoveSectionFromConfig(_view.ProfileName, _configFile);
-            _messageService.ShowMessage("Profile " + _view.ProfileName + " deleted");
-            _view.SelectedProfile = -1;
-            _view.ClearProfiles();
-            LoadProfiles(_configFile);
+            if (_messageService.ShowConfirmation("Are you sure you want to delete the selected profile?"))
+            {
+                _manager.RemoveSectionFromConfig(_view.ProfileName, _configFile);
+                _messageService.ShowMessage("Profile " + _view.ProfileName + " deleted");
+                _view.SelectedProfile = -1;
+                _view.ClearProfiles();
+                LoadProfiles(_configFile);
+            }
+            else
+                return;
         }
 
         private void _view_ExitButtonClick(object sender, EventArgs e)
