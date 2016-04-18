@@ -5,7 +5,7 @@ namespace SSH_Remote_Client
 {
     public interface IMainForm
     {
-        // properties
+        // Свойства
         string Log { get; set; }
         string RemotePath { get; set; }
         string SelectedItem { get; }
@@ -15,14 +15,14 @@ namespace SSH_Remote_Client
         bool LabelProgressVisible { get; set; }
         int CurrentProgress { get; }
 
-        // methods
+        // Методы
         void AddItemToList(object item);
         void ClearListBox();
         void ClearProfiles();
         void AddProfile(string profileName);
         void IncreaseInstallationProgress(int percent);
 
-        // events
+        // События
         event EventHandler FileUploadClick;
         event EventHandler SearchFilesClick;
         event EventHandler ListBoxItemDoubleClick;
