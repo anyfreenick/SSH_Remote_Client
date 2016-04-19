@@ -39,22 +39,23 @@
             this.fldRemotePath = new System.Windows.Forms.TextBox();
             this.btnSrchFiles = new System.Windows.Forms.Button();
             this.lstFileList = new System.Windows.Forms.ListBox();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.listBox2 = new System.Windows.Forms.ListBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.lblCurProgress = new System.Windows.Forms.Label();
             this.btnInstall = new System.Windows.Forms.Button();
             this.lblProgress = new System.Windows.Forms.Label();
             this.pbInstall = new System.Windows.Forms.ProgressBar();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.btnDownloadFromRemote = new System.Windows.Forms.Button();
+            this.btnUploadToRemote = new System.Windows.Forms.Button();
+            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.fldRemoteFilePath = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.fldLocalFilePath = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lstLocalFiles = new System.Windows.Forms.ListBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiExit = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,11 +63,10 @@
             this.tsmiSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblCurProgress = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage4.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.tabPage4.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -190,110 +190,6 @@
             this.lstFileList.Size = new System.Drawing.Size(215, 472);
             this.lstFileList.TabIndex = 12;
             // 
-            // tabPage4
-            // 
-            this.tabPage4.Controls.Add(this.button2);
-            this.tabPage4.Controls.Add(this.button1);
-            this.tabPage4.Controls.Add(this.listBox2);
-            this.tabPage4.Controls.Add(this.label7);
-            this.tabPage4.Controls.Add(this.textBox2);
-            this.tabPage4.Controls.Add(this.label3);
-            this.tabPage4.Controls.Add(this.label2);
-            this.tabPage4.Controls.Add(this.textBox1);
-            this.tabPage4.Controls.Add(this.label1);
-            this.tabPage4.Controls.Add(this.listBox1);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(910, 543);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Upload files to linux host";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(403, 87);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(122, 23);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "Download from remote";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(403, 58);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(122, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Upload to remote";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // listBox2
-            // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(203, 58);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(194, 485);
-            this.listBox2.TabIndex = 7;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(200, 43);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(78, 13);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "Files on remote";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(203, 20);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(194, 20);
-            this.textBox2.TabIndex = 5;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(200, 3);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(68, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Remote path";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(0, 43);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Files on local";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(3, 20);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(194, 20);
-            this.textBox1.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(0, 3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Local path";
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(3, 58);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(194, 485);
-            this.listBox1.TabIndex = 0;
-            // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.lblCurProgress);
@@ -307,6 +203,14 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "InstallSwagger";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // lblCurProgress
+            // 
+            this.lblCurProgress.AutoSize = true;
+            this.lblCurProgress.Location = new System.Drawing.Point(62, 101);
+            this.lblCurProgress.Name = "lblCurProgress";
+            this.lblCurProgress.Size = new System.Drawing.Size(0, 13);
+            this.lblCurProgress.TabIndex = 3;
             // 
             // btnInstall
             // 
@@ -345,6 +249,112 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Jenkins";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.btnDownloadFromRemote);
+            this.tabPage4.Controls.Add(this.btnUploadToRemote);
+            this.tabPage4.Controls.Add(this.listBox2);
+            this.tabPage4.Controls.Add(this.label7);
+            this.tabPage4.Controls.Add(this.fldRemoteFilePath);
+            this.tabPage4.Controls.Add(this.label3);
+            this.tabPage4.Controls.Add(this.label2);
+            this.tabPage4.Controls.Add(this.fldLocalFilePath);
+            this.tabPage4.Controls.Add(this.label1);
+            this.tabPage4.Controls.Add(this.lstLocalFiles);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(910, 543);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Upload files to linux host";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // btnDownloadFromRemote
+            // 
+            this.btnDownloadFromRemote.Location = new System.Drawing.Point(403, 87);
+            this.btnDownloadFromRemote.Name = "btnDownloadFromRemote";
+            this.btnDownloadFromRemote.Size = new System.Drawing.Size(122, 23);
+            this.btnDownloadFromRemote.TabIndex = 9;
+            this.btnDownloadFromRemote.Text = "Download from remote";
+            this.btnDownloadFromRemote.UseVisualStyleBackColor = true;
+            // 
+            // btnUploadToRemote
+            // 
+            this.btnUploadToRemote.Location = new System.Drawing.Point(403, 58);
+            this.btnUploadToRemote.Name = "btnUploadToRemote";
+            this.btnUploadToRemote.Size = new System.Drawing.Size(122, 23);
+            this.btnUploadToRemote.TabIndex = 8;
+            this.btnUploadToRemote.Text = "Upload to remote";
+            this.btnUploadToRemote.UseVisualStyleBackColor = true;
+            // 
+            // listBox2
+            // 
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.Location = new System.Drawing.Point(203, 58);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(194, 485);
+            this.listBox2.TabIndex = 7;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(200, 43);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(78, 13);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "Files on remote";
+            // 
+            // fldRemoteFilePath
+            // 
+            this.fldRemoteFilePath.Location = new System.Drawing.Point(203, 20);
+            this.fldRemoteFilePath.Name = "fldRemoteFilePath";
+            this.fldRemoteFilePath.Size = new System.Drawing.Size(194, 20);
+            this.fldRemoteFilePath.TabIndex = 5;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(200, 3);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(68, 13);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Remote path";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(0, 43);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(68, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Files on local";
+            // 
+            // fldLocalFilePath
+            // 
+            this.fldLocalFilePath.Location = new System.Drawing.Point(3, 20);
+            this.fldLocalFilePath.Name = "fldLocalFilePath";
+            this.fldLocalFilePath.Size = new System.Drawing.Size(194, 20);
+            this.fldLocalFilePath.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(0, 3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(57, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Local path";
+            // 
+            // lstLocalFiles
+            // 
+            this.lstLocalFiles.FormattingEnabled = true;
+            this.lstLocalFiles.Items.AddRange(new object[] {
+            ".."});
+            this.lstLocalFiles.Location = new System.Drawing.Point(3, 58);
+            this.lstLocalFiles.Name = "lstLocalFiles";
+            this.lstLocalFiles.Size = new System.Drawing.Size(194, 485);
+            this.lstLocalFiles.TabIndex = 0;
             // 
             // menuStrip1
             // 
@@ -400,14 +410,6 @@
             this.tsmiAbout.Size = new System.Drawing.Size(107, 22);
             this.tsmiAbout.Text = "About";
             // 
-            // lblCurProgress
-            // 
-            this.lblCurProgress.AutoSize = true;
-            this.lblCurProgress.Location = new System.Drawing.Point(62, 101);
-            this.lblCurProgress.Name = "lblCurProgress";
-            this.lblCurProgress.Size = new System.Drawing.Size(0, 13);
-            this.lblCurProgress.TabIndex = 3;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -421,10 +423,10 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.tabPage4.ResumeLayout(false);
-            this.tabPage4.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -457,16 +459,16 @@
         private System.Windows.Forms.ProgressBar pbInstall;
         private System.Windows.Forms.Button btnInstall;
         private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnDownloadFromRemote;
+        private System.Windows.Forms.Button btnUploadToRemote;
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox fldRemoteFilePath;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox fldLocalFilePath;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox lstLocalFiles;
         private System.Windows.Forms.Label lblCurProgress;
     }
 }

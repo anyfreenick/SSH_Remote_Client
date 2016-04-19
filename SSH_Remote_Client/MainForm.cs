@@ -14,6 +14,7 @@ namespace SSH_Remote_Client
         bool ProgressBarVisible { get; set; }
         bool LabelProgressVisible { get; set; }
         int CurrentProgress { get; }
+        string LocalFilePath { get; }
 
         // Методы
         void AddItemToList(object item);
@@ -21,6 +22,7 @@ namespace SSH_Remote_Client
         void ClearProfiles();
         void AddProfile(string profileName);
         void IncreaseInstallationProgress(int percent);
+        void AddItemToLocalFileList(object item);
 
         // События
         event EventHandler FileUploadClick;
@@ -31,6 +33,7 @@ namespace SSH_Remote_Client
         event EventHandler SelectedProfileChanged;
         event EventHandler ProfileClick;
         event EventHandler InstallButtonClick;
+        event EventHandler LocalFilePathPressEnter;
     }
 
     public partial class MainForm : Form, IMainForm
@@ -49,8 +52,9 @@ namespace SSH_Remote_Client
             cmbProfile.SelectedIndexChanged += CmbProfile_SelectedIndexChanged;
             cmbProfile.Click += CmbProfile_Click;
             btnInstall.Click += BtnInstall_Click;
+            fldLocalFilePath.KeyPress += FldLocalFilePath_KeyPress;
         }
-        
+                
         #region Проброс событий
         private void BtnUploadFile_Click(object sender, EventArgs e)
         {
@@ -82,6 +86,14 @@ namespace SSH_Remote_Client
             if (e.KeyChar == '\r')
             {
                 if (SearchFilesClick != null) SearchFilesClick(this, EventArgs.Empty);
+            }
+        }
+
+        private void FldLocalFilePath_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\r')
+            {
+                if (LocalFilePathPressEnter != null) LocalFilePathPressEnter(this, EventArgs.Empty);
             }
         }
 
@@ -117,6 +129,11 @@ namespace SSH_Remote_Client
         public void AddItemToList(object item)
         {
             lstFileList.Items.Add(item);
+        }
+
+        public void AddItemToLocalFileList(object item)
+        {
+            lstLocalFiles.Items.Add(item);
         }
 
         public string SelectedItem
@@ -172,6 +189,11 @@ namespace SSH_Remote_Client
             set { lblProgress.Visible = value; }
         }
 
+        public string LocalFilePath
+        {
+            get { return fldLocalFilePath.Text; }
+        }
+
         public event EventHandler FileUploadClick;
         public event EventHandler SearchFilesClick;
         public event EventHandler ListBoxItemDoubleClick;
@@ -180,6 +202,7 @@ namespace SSH_Remote_Client
         public event EventHandler SelectedProfileChanged;
         public event EventHandler ProfileClick;
         public event EventHandler InstallButtonClick;
+        public event EventHandler LocalFilePathPressEnter;
         #endregion
 
         #region Код самой формы

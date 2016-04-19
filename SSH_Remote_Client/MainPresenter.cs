@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using SSH_Remote_Client.BL;
+using System.IO;
 
 namespace SSH_Remote_Client
 {
@@ -28,8 +29,9 @@ namespace SSH_Remote_Client
             _view.SelectedProfileChanged += _view_SelectedProfileChanged;
             _view.ProfileClick += _view_ProfileClick;
             _view.InstallButtonClick += _view_InstallButtonClick;
-        }        
-
+            _view.LocalFilePathPressEnter += _view_LocalFilePathPressEnter;
+        }
+                
         #region Обработка событий
         // Клик по кнопке Upload File
         private void _view_FileUploadClick(object sender, EventArgs e)
@@ -98,6 +100,24 @@ namespace SSH_Remote_Client
             _view.LabelProgressVisible = true;
             if (_view.CurrentProgress < 100)
                 _view.IncreaseInstallationProgress(10);
+        }
+
+        // Нажатие Enter в поле local file path
+        private void _view_LocalFilePathPressEnter(object sender, EventArgs e)
+        {
+            DirectoryInfo dir = new DirectoryInfo(_view.LocalFilePath);
+            List<string> dirs = new List<string>();
+            List<string> files = new List<string>();
+            foreach (var folder in dir.GetDirectories())
+                dirs.Add(folder.Name);
+            foreach (var file in dir.GetFiles())
+                files.Add(file.Name);
+            dirs.Sort();
+            files.Sort();
+            foreach (var item in dirs)
+                _view.AddItemToLocalFileList(item);
+            foreach (var item in files)
+                _view.AddItemToLocalFileList(item);
         }
         #endregion
 
