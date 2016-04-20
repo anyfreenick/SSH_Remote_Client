@@ -15,8 +15,10 @@ namespace SSH_Remote_Client.BL
         string GetFileContent(string fileName);
         string SetPath(string sectionName, string configFile);
         void UploadFile(string filePath);
+        void UploadFile(string filePath, string remotePath);
         void SetConnection(string sectionName, string configFile);
         void ExecuteCmdOnRemote(string fileName);
+        void ExecuteCmdOnRemote(string[] cmds);
         List<string> LoadSections(string filePath);
     }
 
@@ -67,7 +69,7 @@ namespace SSH_Remote_Client.BL
             ssh.Disconnect();
             ssh.Dispose();
             return content;
-        }
+        }        
 
         public string SetPath(string sectionName, string configFile)
         {
@@ -92,6 +94,23 @@ namespace SSH_Remote_Client.BL
             sftp.Dispose();
         }
 
+        /// <summary>
+        /// Загружает файл на удаленный сервер, а каталог указанный в свойстве RemotePath
+        /// </summary>
+        /// <param name="filePath">Путь к файлу</param>
+        /// <param name="remotePath">Путь на удаленном сервере</param>
+        public void UploadFile(string filePath, string remotePath)
+        {
+            SftpClient sftp = new SftpClient(_connection);
+            sftp.Connect();
+            FileInfo file = new FileInfo(filePath);
+            string uploadFile = file.FullName;
+            var fileStream = new FileStream(uploadFile, FileMode.Open);
+            sftp.UploadFile(fileStream, remotePath + file.Name, true, null);
+            sftp.Disconnect();
+            sftp.Dispose();
+        }
+
         public void ExecuteCmdOnRemote(string fileName)
         {
             var ssh = new SshClient(_connection);
@@ -99,6 +118,14 @@ namespace SSH_Remote_Client.BL
             var cmds = new SshCommand[] { ssh.CreateCommand("chmod +x " + _remotePath + "/" + fileName), ssh.CreateCommand(_remotePath + "/" + fileName), ssh.CreateCommand(_remotePath + "/nginx restart") };
             foreach (var cmd in cmds)
                 cmd.Execute();            
+        }
+
+        public void ExecuteCmdOnRemote(string[] cmds)
+        {
+            var ssh = new SshClient(_connection);
+            ssh.Connect();
+            foreach (string cmd in cmds)            
+                ssh.CreateCommand(cmd).Execute();            
         }
 
         public List<string> LoadSections(string filePath)
