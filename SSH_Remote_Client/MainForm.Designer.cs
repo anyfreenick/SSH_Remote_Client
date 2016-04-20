@@ -33,13 +33,13 @@
             this.label4 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.label6 = new System.Windows.Forms.Label();
-            this.cmbProfile = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.fldRemotePath = new System.Windows.Forms.TextBox();
             this.btnSrchFiles = new System.Windows.Forms.Button();
             this.lstFileList = new System.Windows.Forms.ListBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btnRunSwagger = new System.Windows.Forms.Button();
+            this.lblSwaggerInstalled = new System.Windows.Forms.Label();
             this.lblCurProgress = new System.Windows.Forms.Label();
             this.btnInstallSwagger = new System.Windows.Forms.Button();
             this.lblProgress = new System.Windows.Forms.Label();
@@ -56,6 +56,8 @@
             this.fldLocalFilePath = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lstLocalFiles = new System.Windows.Forms.ListBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cmbProfile = new System.Windows.Forms.ComboBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiExit = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,8 +65,6 @@
             this.tsmiSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblSwaggerInstalled = new System.Windows.Forms.Label();
-            this.btnRunSwagger = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -134,25 +134,6 @@
             this.tabPage1.Text = "SSH";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(4, 24);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(36, 13);
-            this.label6.TabIndex = 17;
-            this.label6.Text = "Profile";
-            // 
-            // cmbProfile
-            // 
-            this.cmbProfile.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbProfile.FormattingEnabled = true;
-            this.cmbProfile.Location = new System.Drawing.Point(4, 40);
-            this.cmbProfile.Name = "cmbProfile";
-            this.cmbProfile.Size = new System.Drawing.Size(121, 21);
-            this.cmbProfile.Sorted = true;
-            this.cmbProfile.TabIndex = 16;
-            // 
             // label5
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -203,10 +184,29 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(910, 543);
+            this.tabPage3.Size = new System.Drawing.Size(910, 500);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "InstallSwagger";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // btnRunSwagger
+            // 
+            this.btnRunSwagger.Location = new System.Drawing.Point(11, 159);
+            this.btnRunSwagger.Name = "btnRunSwagger";
+            this.btnRunSwagger.Size = new System.Drawing.Size(115, 23);
+            this.btnRunSwagger.TabIndex = 5;
+            this.btnRunSwagger.Text = "Run Swagger";
+            this.btnRunSwagger.UseVisualStyleBackColor = true;
+            this.btnRunSwagger.Visible = false;
+            // 
+            // lblSwaggerInstalled
+            // 
+            this.lblSwaggerInstalled.AutoSize = true;
+            this.lblSwaggerInstalled.Location = new System.Drawing.Point(8, 143);
+            this.lblSwaggerInstalled.Name = "lblSwaggerInstalled";
+            this.lblSwaggerInstalled.Size = new System.Drawing.Size(138, 13);
+            this.lblSwaggerInstalled.TabIndex = 4;
+            this.lblSwaggerInstalled.Text = "Swagger is not installed yet.";
             // 
             // lblCurProgress
             // 
@@ -249,7 +249,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(910, 543);
+            this.tabPage2.Size = new System.Drawing.Size(910, 500);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Jenkins";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -269,7 +269,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(910, 543);
+            this.tabPage4.Size = new System.Drawing.Size(910, 500);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Upload files to linux host";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -360,6 +360,25 @@
             this.lstLocalFiles.Size = new System.Drawing.Size(194, 485);
             this.lstLocalFiles.TabIndex = 0;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(4, 24);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(36, 13);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "Profile";
+            // 
+            // cmbProfile
+            // 
+            this.cmbProfile.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbProfile.FormattingEnabled = true;
+            this.cmbProfile.Location = new System.Drawing.Point(4, 40);
+            this.cmbProfile.Name = "cmbProfile";
+            this.cmbProfile.Size = new System.Drawing.Size(121, 21);
+            this.cmbProfile.Sorted = true;
+            this.cmbProfile.TabIndex = 16;
+            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -413,26 +432,6 @@
             this.tsmiAbout.Name = "tsmiAbout";
             this.tsmiAbout.Size = new System.Drawing.Size(107, 22);
             this.tsmiAbout.Text = "About";
-            // 
-            // lblSwaggerInstalled
-            // 
-            this.lblSwaggerInstalled.AutoSize = true;
-            this.lblSwaggerInstalled.Location = new System.Drawing.Point(265, 203);
-            this.lblSwaggerInstalled.Name = "lblSwaggerInstalled";
-            this.lblSwaggerInstalled.Size = new System.Drawing.Size(336, 13);
-            this.lblSwaggerInstalled.TabIndex = 4;
-            this.lblSwaggerInstalled.Text = "Swagger is now installed! You can run it by pressing the below button!";
-            this.lblSwaggerInstalled.Visible = false;
-            // 
-            // btnRunSwagger
-            // 
-            this.btnRunSwagger.Location = new System.Drawing.Point(364, 219);
-            this.btnRunSwagger.Name = "btnRunSwagger";
-            this.btnRunSwagger.Size = new System.Drawing.Size(142, 23);
-            this.btnRunSwagger.TabIndex = 5;
-            this.btnRunSwagger.Text = "Run Swagger";
-            this.btnRunSwagger.UseVisualStyleBackColor = true;
-            this.btnRunSwagger.Visible = false;
             // 
             // MainForm
             // 

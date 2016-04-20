@@ -101,7 +101,7 @@ namespace SSH_Remote_Client
             _view.ProgressBarVisible = true;
             _view.LabelProgressVisible = true;
             _view.LabelCurrentProgress = "Uploading archive";
-            connect();
+            /*connect();
             _manager.UploadFile("public.zip", "/root");
             if (_view.CurrentProgress < 100)
                 _view.IncreaseInstallationProgress(50);
@@ -111,8 +111,8 @@ namespace SSH_Remote_Client
             if (_view.CurrentProgress < 100)
                 _view.IncreaseInstallationProgress(50);
             _view.LabelCurrentProgress = "Done!!!";
-            _view.ButtonIstallSwaggerEnabled = false;
-            _view.LabelSwaggerInstalledVisible = true;
+            _view.ButtonIstallSwaggerEnabled = false;*/
+            _view.LabelSwaggerInstalled = "Swagger is now installed! You can run it by pressing the below button!";
             _view.ButtonRunSwaggerVisible = true;            
         }
 

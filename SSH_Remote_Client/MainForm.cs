@@ -30,11 +30,11 @@ namespace SSH_Remote_Client
         #region Install swagger tab
         //Properties
         bool ProgressBarVisible { get; set; }
-        bool LabelProgressVisible { get; set; }
-        bool LabelSwaggerInstalledVisible { get; set; }
+        bool LabelProgressVisible { get; set; }        
         bool ButtonRunSwaggerVisible { get; set; }
         bool ButtonIstallSwaggerEnabled { get; set; }
         string LabelCurrentProgress { get; set; }
+        string LabelSwaggerInstalled { get; set; }
         int CurrentProgress { get; }
 
         // Methods
@@ -232,10 +232,10 @@ namespace SSH_Remote_Client
             set { lblProgress.Visible = value; }
         }
 
-        public bool LabelSwaggerInstalledVisible
+        public string LabelSwaggerInstalled
         {
-            get { return lblSwaggerInstalled.Visible; }
-            set { lblSwaggerInstalled.Visible = value; }
+            get { return lblSwaggerInstalled.Text; }
+            set { lblSwaggerInstalled.Text = value; }
         }
 
         public bool ButtonIstallSwaggerEnabled
