@@ -5,35 +5,55 @@ namespace SSH_Remote_Client
 {
     public interface IMainForm
     {
-        // Свойства
+        #region SSH tab
+        // Properties
         string Log { get; set; }
         string RemotePath { get; set; }
         string SelectedItem { get; }
         string Profile { get; }
         int SelectedProfile { get; set; }
-        bool ProgressBarVisible { get; set; }
-        bool LabelProgressVisible { get; set; }
-        int CurrentProgress { get; }
-        string LocalFilePath { get; }
 
-        // Методы
+        // Methods
         void AddItemToList(object item);
         void ClearListBox();
         void ClearProfiles();
         void AddProfile(string profileName);
-        void IncreaseInstallationProgress(int percent);
-        void AddItemToLocalFileList(object item);
 
-        // События
+        // Events
         event EventHandler FileUploadClick;
         event EventHandler SearchFilesClick;
         event EventHandler ListBoxItemDoubleClick;
-        event EventHandler ToolStripMenuAboutClick;
-        event EventHandler ToolStripMenuSettingsClick;
         event EventHandler SelectedProfileChanged;
         event EventHandler ProfileClick;
+        #endregion
+
+        #region Install swagger tab
+        //Properties
+        bool ProgressBarVisible { get; set; }
+        bool LabelProgressVisible { get; set; }
+        int CurrentProgress { get; }
+
+        // Methods
+        void IncreaseInstallationProgress(int percent);
+
+        // Events
         event EventHandler InstallButtonClick;
+        #endregion
+
+        #region Upload files to linux tab
+        // Свойства
+        string LocalFilePath { get; }
+
+        // Методы        
+        void AddItemToLocalFileList(object item);
+
+        // События
         event EventHandler LocalFilePathPressEnter;
+        event EventHandler RemoteFilePathPressEnter;
+        #endregion
+
+        event EventHandler ToolStripMenuAboutClick;
+        event EventHandler ToolStripMenuSettingsClick;
     }
 
     public partial class MainForm : Form, IMainForm
@@ -54,8 +74,10 @@ namespace SSH_Remote_Client
             btnInstall.Click += BtnInstall_Click;
             fldLocalFilePath.KeyPress += FldLocalFilePath_KeyPress;
         }
-                
+
         #region Проброс событий
+
+        #region SSH tab
         private void BtnUploadFile_Click(object sender, EventArgs e)
         {
             if (FileUploadClick != null) FileUploadClick(this, EventArgs.Empty);
@@ -71,29 +93,11 @@ namespace SSH_Remote_Client
             if (ListBoxItemDoubleClick != null) ListBoxItemDoubleClick(this, EventArgs.Empty);
         }
 
-        private void TsmiSettings_Click(object sender, EventArgs e)
-        {
-            if (ToolStripMenuSettingsClick != null) ToolStripMenuSettingsClick(this, EventArgs.Empty);
-        }
-
-        private void TsmiAbout_Click(object sender, EventArgs e)
-        {
-            if (ToolStripMenuAboutClick != null) ToolStripMenuAboutClick(this, EventArgs.Empty);
-        }
-
         private void FldRemotePath_KeyPress1(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == '\r')
             {
                 if (SearchFilesClick != null) SearchFilesClick(this, EventArgs.Empty);
-            }
-        }
-
-        private void FldLocalFilePath_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == '\r')
-            {
-                if (LocalFilePathPressEnter != null) LocalFilePathPressEnter(this, EventArgs.Empty);
             }
         }
 
@@ -106,14 +110,40 @@ namespace SSH_Remote_Client
         {
             if (ProfileClick != null) ProfileClick(this, EventArgs.Empty);
         }
+        #endregion
 
+        #region Install swagger tab
         private void BtnInstall_Click(object sender, EventArgs e)
         {
             if (InstallButtonClick != null) InstallButtonClick(this, EventArgs.Empty);
         }
         #endregion
 
+        #region Upload files to linux tab
+        private void FldLocalFilePath_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\r')
+            {
+                if (LocalFilePathPressEnter != null) LocalFilePathPressEnter(this, EventArgs.Empty);
+            }
+        }
+        #endregion
+
+        private void TsmiSettings_Click(object sender, EventArgs e)
+        {
+            if (ToolStripMenuSettingsClick != null) ToolStripMenuSettingsClick(this, EventArgs.Empty);
+        }
+
+        private void TsmiAbout_Click(object sender, EventArgs e)
+        {
+            if (ToolStripMenuAboutClick != null) ToolStripMenuAboutClick(this, EventArgs.Empty);
+        }
+        #endregion
+
         #region Реализация интерфейса IMainForm
+
+        #region SSH tab
+        // Properties
         public string Log
         {
             get { return fldLog.Text; }
@@ -124,16 +154,6 @@ namespace SSH_Remote_Client
         {
             get { return fldRemotePath.Text; }
             set { fldRemotePath.Text = value; }
-        }
-
-        public void AddItemToList(object item)
-        {
-            lstFileList.Items.Add(item);
-        }
-
-        public void AddItemToLocalFileList(object item)
-        {
-            lstLocalFiles.Items.Add(item);
         }
 
         public string SelectedItem
@@ -150,8 +170,14 @@ namespace SSH_Remote_Client
         {
             get { return cmbProfile.SelectedIndex; }
             set { cmbProfile.SelectedIndex = value; }
-        }        
+        }
 
+        // Methods
+        public void AddItemToList(object item)
+        {
+            lstFileList.Items.Add(item);
+        }
+                
         public void ClearListBox()
         {
             lstFileList.Items.Clear();
@@ -167,11 +193,16 @@ namespace SSH_Remote_Client
             cmbProfile.Items.Clear();
         }
 
-        public void IncreaseInstallationProgress(int percent)
-        {
-            pbInstall.Value += percent;
-        }
+        // Events
+        public event EventHandler FileUploadClick;
+        public event EventHandler SearchFilesClick;
+        public event EventHandler ListBoxItemDoubleClick;
+        public event EventHandler SelectedProfileChanged;
+        public event EventHandler ProfileClick;
+        #endregion
 
+        #region Install swagger tab
+        //Properties
         public bool ProgressBarVisible
         {
             get { return pbInstall.Visible; }
@@ -189,20 +220,36 @@ namespace SSH_Remote_Client
             set { lblProgress.Visible = value; }
         }
 
+        // Methods
+        public void IncreaseInstallationProgress(int percent)
+        {
+            pbInstall.Value += percent;
+        }
+        
+        // Events
+        public event EventHandler InstallButtonClick;
+        #endregion
+
+        #region Upload files to linux tab
+        // Propoerties
         public string LocalFilePath
         {
             get { return fldLocalFilePath.Text; }
         }
 
-        public event EventHandler FileUploadClick;
-        public event EventHandler SearchFilesClick;
-        public event EventHandler ListBoxItemDoubleClick;
-        public event EventHandler ToolStripMenuAboutClick;
-        public event EventHandler ToolStripMenuSettingsClick;
-        public event EventHandler SelectedProfileChanged;
-        public event EventHandler ProfileClick;
-        public event EventHandler InstallButtonClick;
+        // Methods
+        public void AddItemToLocalFileList(object item)
+        {
+            lstLocalFiles.Items.Add(item);
+        }
+
+        // Events
         public event EventHandler LocalFilePathPressEnter;
+        public event EventHandler RemoteFilePathPressEnter;
+        #endregion
+
+        public event EventHandler ToolStripMenuAboutClick;
+        public event EventHandler ToolStripMenuSettingsClick;        
         #endregion
 
         #region Код самой формы
