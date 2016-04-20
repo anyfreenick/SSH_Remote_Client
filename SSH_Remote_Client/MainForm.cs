@@ -79,7 +79,6 @@ namespace SSH_Remote_Client
             btnInstallSwagger.Click += BtnInstallSwagger_Click;
             fldLocalFilePath.KeyPress += FldLocalFilePath_KeyPress;
             btnRunSwagger.Click += BtnRunSwagger_Click;
-            btnRunSwagger.Visible = true;
         }        
 
         #region Проброс событий

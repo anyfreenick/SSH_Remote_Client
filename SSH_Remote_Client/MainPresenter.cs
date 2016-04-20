@@ -79,7 +79,7 @@ namespace SSH_Remote_Client
         // Клик по элементу меню Tools --> About
         private void _view_ToolStripMenuAboutClick(object sender, EventArgs e)
         {
-            _messageService.ShowMessage("Надо написать какой-нибудь бред!!!");
+            _messageService.ShowQuestion("Ну и нахуй ты сюда нажал?!");
         }
 
         // Выбор элемента в списке Profile
@@ -101,13 +101,13 @@ namespace SSH_Remote_Client
             _view.ProgressBarVisible = true;
             _view.LabelProgressVisible = true;
             _view.LabelCurrentProgress = "Uploading archive";
-            connect();
-            _manager.UploadFile("public.zip", "/root");
+            //connect();
+            //_manager.UploadFile("public.zip", "/root");
             if (_view.CurrentProgress < 100)
                 _view.IncreaseInstallationProgress(50);
-            _view.LabelCurrentProgress = "Extracting archive";
-            string[] cmds = { "unzip /root/public.zip -d /usr/local/kronos/tomcat/webapps/wfc/" };
-            _manager.ExecuteCmdOnRemote(cmds);
+            //_view.LabelCurrentProgress = "Extracting archive";
+            //string[] cmds = { "unzip /root/public.zip -d /usr/local/kronos/tomcat/webapps/wfc/" };
+            //_manager.ExecuteCmdOnRemote(cmds);
             if (_view.CurrentProgress < 100)
                 _view.IncreaseInstallationProgress(50);
             _view.LabelCurrentProgress = "Done!!!";

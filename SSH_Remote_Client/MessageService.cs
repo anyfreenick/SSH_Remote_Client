@@ -7,6 +7,7 @@ namespace SSH_Remote_Client
         void ShowMessage(string message);
         void ShowExclamation(string exclamation);
         void ShowError(string error);
+        void ShowQuestion(string question);
         bool ShowConfirmation(string confirmation);
     }
 
@@ -35,6 +36,11 @@ namespace SSH_Remote_Client
             else if (dlgRes == DialogResult.No)
                 return false;
             return false;
+        }
+
+        public void ShowQuestion(string question)
+        {
+            MessageBox.Show(question, "Вопрос", MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
     }
 }

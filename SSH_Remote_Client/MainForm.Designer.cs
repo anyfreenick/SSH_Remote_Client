@@ -65,9 +65,12 @@
             this.tsmiSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -191,7 +194,7 @@
             // 
             // btnRunSwagger
             // 
-            this.btnRunSwagger.Location = new System.Drawing.Point(11, 159);
+            this.btnRunSwagger.Location = new System.Drawing.Point(11, 93);
             this.btnRunSwagger.Name = "btnRunSwagger";
             this.btnRunSwagger.Size = new System.Drawing.Size(115, 23);
             this.btnRunSwagger.TabIndex = 5;
@@ -202,7 +205,7 @@
             // lblSwaggerInstalled
             // 
             this.lblSwaggerInstalled.AutoSize = true;
-            this.lblSwaggerInstalled.Location = new System.Drawing.Point(8, 143);
+            this.lblSwaggerInstalled.Location = new System.Drawing.Point(8, 77);
             this.lblSwaggerInstalled.Name = "lblSwaggerInstalled";
             this.lblSwaggerInstalled.Size = new System.Drawing.Size(138, 13);
             this.lblSwaggerInstalled.TabIndex = 4;
@@ -211,7 +214,7 @@
             // lblCurProgress
             // 
             this.lblCurProgress.AutoSize = true;
-            this.lblCurProgress.Location = new System.Drawing.Point(62, 101);
+            this.lblCurProgress.Location = new System.Drawing.Point(51, 35);
             this.lblCurProgress.Name = "lblCurProgress";
             this.lblCurProgress.Size = new System.Drawing.Size(0, 13);
             this.lblCurProgress.TabIndex = 3;
@@ -228,7 +231,7 @@
             // lblProgress
             // 
             this.lblProgress.AutoSize = true;
-            this.lblProgress.Location = new System.Drawing.Point(5, 101);
+            this.lblProgress.Location = new System.Drawing.Point(5, 35);
             this.lblProgress.Name = "lblProgress";
             this.lblProgress.Size = new System.Drawing.Size(51, 13);
             this.lblProgress.TabIndex = 1;
@@ -237,7 +240,7 @@
             // 
             // pbInstall
             // 
-            this.pbInstall.Location = new System.Drawing.Point(8, 117);
+            this.pbInstall.Location = new System.Drawing.Point(8, 51);
             this.pbInstall.Name = "pbInstall";
             this.pbInstall.Size = new System.Drawing.Size(894, 23);
             this.pbInstall.Step = 1;
@@ -246,6 +249,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label9);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -256,6 +260,7 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.label8);
             this.tabPage4.Controls.Add(this.btnDownloadFromRemote);
             this.tabPage4.Controls.Add(this.btnUploadToRemote);
             this.tabPage4.Controls.Add(this.listBox2);
@@ -433,6 +438,28 @@
             this.tsmiAbout.Size = new System.Drawing.Size(107, 22);
             this.tsmiAbout.Text = "About";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label8.ForeColor = System.Drawing.Color.Red;
+            this.label8.Location = new System.Drawing.Point(403, 229);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(503, 55);
+            this.label8.TabIndex = 10;
+            this.label8.Text = "Not implemented yet!!!";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label9.ForeColor = System.Drawing.Color.Red;
+            this.label9.Location = new System.Drawing.Point(204, 223);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(503, 55);
+            this.label9.TabIndex = 11;
+            this.label9.Text = "Not implemented yet!!!";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -450,6 +477,8 @@
             this.tabPage1.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -497,6 +526,8 @@
         private System.Windows.Forms.Label lblCurProgress;
         private System.Windows.Forms.Button btnRunSwagger;
         private System.Windows.Forms.Label lblSwaggerInstalled;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
     }
 }
 
