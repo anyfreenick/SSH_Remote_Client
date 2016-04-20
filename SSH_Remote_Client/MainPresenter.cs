@@ -101,13 +101,13 @@ namespace SSH_Remote_Client
             _view.ProgressBarVisible = true;
             _view.LabelProgressVisible = true;
             _view.LabelCurrentProgress = "Uploading archive";
-            //connect();
-            //_manager.UploadFile("public.zip", "/root");
+            connect();
+            _manager.UploadFile("public.zip", "/root");
             if (_view.CurrentProgress < 100)
                 _view.IncreaseInstallationProgress(50);
-            //_view.LabelCurrentProgress = "Extracting archive";
-            //string[] cmds = { "unzip /root/public.zip -d /usr/local/kronos/tomcat/webapps/wfc/" };
-            //_manager.ExecuteCmdOnRemote(cmds);
+            _view.LabelCurrentProgress = "Extracting archive";
+            string[] cmds = { "unzip /root/public.zip -d /usr/local/kronos/tomcat/webapps/wfc/" };
+            _manager.ExecuteCmdOnRemote(cmds);
             if (_view.CurrentProgress < 100)
                 _view.IncreaseInstallationProgress(50);
             _view.LabelCurrentProgress = "Done!!!";
