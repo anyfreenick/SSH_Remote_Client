@@ -31,13 +31,18 @@ namespace SSH_Remote_Client
         //Properties
         bool ProgressBarVisible { get; set; }
         bool LabelProgressVisible { get; set; }
+        bool LabelSwaggerInstalledVisible { get; set; }
+        bool ButtonRunSwaggerVisible { get; set; }
+        bool ButtonIstallSwaggerEnabled { get; set; }
+        string LabelCurrentProgress { get; set; }
         int CurrentProgress { get; }
 
         // Methods
         void IncreaseInstallationProgress(int percent);
 
         // Events
-        event EventHandler InstallButtonClick;
+        event EventHandler InstallSwaggerButtonClick;
+        event EventHandler ButtonRunSwaggerClick;
         #endregion
 
         #region Upload files to linux tab
@@ -71,9 +76,11 @@ namespace SSH_Remote_Client
             fldRemotePath.KeyPress += FldRemotePath_KeyPress1;
             cmbProfile.SelectedIndexChanged += CmbProfile_SelectedIndexChanged;
             cmbProfile.Click += CmbProfile_Click;
-            btnInstall.Click += BtnInstall_Click;
+            btnInstallSwagger.Click += BtnInstallSwagger_Click;
             fldLocalFilePath.KeyPress += FldLocalFilePath_KeyPress;
-        }
+            btnRunSwagger.Click += BtnRunSwagger_Click;
+            btnRunSwagger.Visible = true;
+        }        
 
         #region Проброс событий
 
@@ -113,9 +120,14 @@ namespace SSH_Remote_Client
         #endregion
 
         #region Install swagger tab
-        private void BtnInstall_Click(object sender, EventArgs e)
+        private void BtnInstallSwagger_Click(object sender, EventArgs e)
         {
-            if (InstallButtonClick != null) InstallButtonClick(this, EventArgs.Empty);
+            if (InstallSwaggerButtonClick != null) InstallSwaggerButtonClick(this, EventArgs.Empty);
+        }
+
+        private void BtnRunSwagger_Click(object sender, EventArgs e)
+        {
+            if (ButtonRunSwaggerClick != null) ButtonRunSwaggerClick(this, EventArgs.Empty);
         }
         #endregion
 
@@ -220,6 +232,30 @@ namespace SSH_Remote_Client
             set { lblProgress.Visible = value; }
         }
 
+        public bool LabelSwaggerInstalledVisible
+        {
+            get { return lblSwaggerInstalled.Visible; }
+            set { lblSwaggerInstalled.Visible = value; }
+        }
+
+        public bool ButtonIstallSwaggerEnabled
+        {
+            get { return btnInstallSwagger.Enabled; }
+            set { btnInstallSwagger.Enabled = false; }
+        }
+
+        public bool ButtonRunSwaggerVisible
+        {
+            get { return btnRunSwagger.Visible; }
+            set { btnRunSwagger.Visible = value; }
+        }
+
+        public string LabelCurrentProgress
+        {
+            get { return lblCurProgress.Text; }
+            set { lblCurProgress.Text = value; }
+        }
+
         // Methods
         public void IncreaseInstallationProgress(int percent)
         {
@@ -227,7 +263,8 @@ namespace SSH_Remote_Client
         }
         
         // Events
-        public event EventHandler InstallButtonClick;
+        public event EventHandler InstallSwaggerButtonClick;
+        public event EventHandler ButtonRunSwaggerClick;
         #endregion
 
         #region Upload files to linux tab

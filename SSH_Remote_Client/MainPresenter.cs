@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Collections.Generic;
 using SSH_Remote_Client.BL;
 using System.IO;
@@ -28,10 +29,11 @@ namespace SSH_Remote_Client
             _view.ToolStripMenuAboutClick += _view_ToolStripMenuAboutClick;            
             _view.SelectedProfileChanged += _view_SelectedProfileChanged;
             _view.ProfileClick += _view_ProfileClick;
-            _view.InstallButtonClick += _view_InstallButtonClick;
+            _view.InstallSwaggerButtonClick += _view_InstallSwaggerButtonClick;
             _view.LocalFilePathPressEnter += _view_LocalFilePathPressEnter;
+            _view.ButtonRunSwaggerClick += _view_ButtonRunSwaggerClick;
         }
-                
+        
         #region Обработка событий
         // Клик по кнопке Upload File
         private void _view_FileUploadClick(object sender, EventArgs e)
@@ -93,13 +95,25 @@ namespace SSH_Remote_Client
             LoadProfiles(_configFile);
         }
 
-        // Клик по кнопке Install swagger. ПЕРЕДЕЛАТЬ!!!
-        private void _view_InstallButtonClick(object sender, EventArgs e)
+        // Клик по кнопке Install swagger
+        private void _view_InstallSwaggerButtonClick(object sender, EventArgs e)
         {
             _view.ProgressBarVisible = true;
             _view.LabelProgressVisible = true;
+            _view.LabelCurrentProgress = "Uploading archive";
+            connect();
+            _manager.UploadFile("public.zip", "/root");
             if (_view.CurrentProgress < 100)
-                _view.IncreaseInstallationProgress(10);
+                _view.IncreaseInstallationProgress(50);
+            _view.LabelCurrentProgress = "Extracting archive";
+            string[] cmds = { "unzip /root/public.zip -d /usr/local/kronos/tomcat/webapps/wfc/" };
+            _manager.ExecuteCmdOnRemote(cmds);
+            if (_view.CurrentProgress < 100)
+                _view.IncreaseInstallationProgress(50);
+            _view.LabelCurrentProgress = "Done!!!";
+            _view.ButtonIstallSwaggerEnabled = false;
+            _view.LabelSwaggerInstalledVisible = true;
+            _view.ButtonRunSwaggerVisible = true;            
         }
 
         // Нажатие Enter в поле local file path
@@ -118,6 +132,13 @@ namespace SSH_Remote_Client
                 _view.AddItemToLocalFileList(item);
             foreach (var item in files)
                 _view.AddItemToLocalFileList(item);
+        }
+
+        //Клик по кнопке Run Swagger
+        private void _view_ButtonRunSwaggerClick(object sender, EventArgs e)
+        {
+            string host = _manager.GetValueFromConfig(_configFile, _view.Profile, "host");
+            Process.Start("http://" + host + "/wfc/public/docs/index.html");
         }
         #endregion
 

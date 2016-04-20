@@ -41,7 +41,7 @@
             this.lstFileList = new System.Windows.Forms.ListBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.lblCurProgress = new System.Windows.Forms.Label();
-            this.btnInstall = new System.Windows.Forms.Button();
+            this.btnInstallSwagger = new System.Windows.Forms.Button();
             this.lblProgress = new System.Windows.Forms.Label();
             this.pbInstall = new System.Windows.Forms.ProgressBar();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -63,6 +63,8 @@
             this.tsmiSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblSwaggerInstalled = new System.Windows.Forms.Label();
+            this.btnRunSwagger = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -88,7 +90,7 @@
             this.fldLog.Multiline = true;
             this.fldLog.Name = "fldLog";
             this.fldLog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.fldLog.Size = new System.Drawing.Size(555, 497);
+            this.fldLog.Size = new System.Drawing.Size(555, 454);
             this.fldLog.TabIndex = 7;
             // 
             // label4
@@ -102,21 +104,21 @@
             // 
             // tabControl1
             // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 24);
+            this.tabControl1.Location = new System.Drawing.Point(0, 67);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(918, 569);
+            this.tabControl1.Size = new System.Drawing.Size(918, 526);
             this.tabControl1.TabIndex = 10;
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.label6);
-            this.tabPage1.Controls.Add(this.cmbProfile);
             this.tabPage1.Controls.Add(this.label5);
             this.tabPage1.Controls.Add(this.btnUploadFile);
             this.tabPage1.Controls.Add(this.fldRemotePath);
@@ -127,7 +129,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(910, 543);
+            this.tabPage1.Size = new System.Drawing.Size(910, 500);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "SSH";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -135,7 +137,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(0, 22);
+            this.label6.Location = new System.Drawing.Point(4, 24);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(36, 13);
             this.label6.TabIndex = 17;
@@ -145,7 +147,7 @@
             // 
             this.cmbProfile.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProfile.FormattingEnabled = true;
-            this.cmbProfile.Location = new System.Drawing.Point(3, 38);
+            this.cmbProfile.Location = new System.Drawing.Point(4, 40);
             this.cmbProfile.Name = "cmbProfile";
             this.cmbProfile.Size = new System.Drawing.Size(121, 21);
             this.cmbProfile.Sorted = true;
@@ -172,7 +174,7 @@
             // btnSrchFiles
             // 
             this.btnSrchFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSrchFiles.Location = new System.Drawing.Point(689, 512);
+            this.btnSrchFiles.Location = new System.Drawing.Point(689, 469);
             this.btnSrchFiles.Name = "btnSrchFiles";
             this.btnSrchFiles.Size = new System.Drawing.Size(99, 23);
             this.btnSrchFiles.TabIndex = 13;
@@ -187,13 +189,15 @@
             this.lstFileList.HorizontalScrollbar = true;
             this.lstFileList.Location = new System.Drawing.Point(689, 38);
             this.lstFileList.Name = "lstFileList";
-            this.lstFileList.Size = new System.Drawing.Size(215, 472);
+            this.lstFileList.Size = new System.Drawing.Size(215, 420);
             this.lstFileList.TabIndex = 12;
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.btnRunSwagger);
+            this.tabPage3.Controls.Add(this.lblSwaggerInstalled);
             this.tabPage3.Controls.Add(this.lblCurProgress);
-            this.tabPage3.Controls.Add(this.btnInstall);
+            this.tabPage3.Controls.Add(this.btnInstallSwagger);
             this.tabPage3.Controls.Add(this.lblProgress);
             this.tabPage3.Controls.Add(this.pbInstall);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
@@ -212,14 +216,14 @@
             this.lblCurProgress.Size = new System.Drawing.Size(0, 13);
             this.lblCurProgress.TabIndex = 3;
             // 
-            // btnInstall
+            // btnInstallSwagger
             // 
-            this.btnInstall.Location = new System.Drawing.Point(8, 6);
-            this.btnInstall.Name = "btnInstall";
-            this.btnInstall.Size = new System.Drawing.Size(104, 23);
-            this.btnInstall.TabIndex = 2;
-            this.btnInstall.Text = "Install swagger";
-            this.btnInstall.UseVisualStyleBackColor = true;
+            this.btnInstallSwagger.Location = new System.Drawing.Point(8, 6);
+            this.btnInstallSwagger.Name = "btnInstallSwagger";
+            this.btnInstallSwagger.Size = new System.Drawing.Size(104, 23);
+            this.btnInstallSwagger.TabIndex = 2;
+            this.btnInstallSwagger.Text = "Install swagger";
+            this.btnInstallSwagger.UseVisualStyleBackColor = true;
             // 
             // lblProgress
             // 
@@ -410,11 +414,33 @@
             this.tsmiAbout.Size = new System.Drawing.Size(107, 22);
             this.tsmiAbout.Text = "About";
             // 
+            // lblSwaggerInstalled
+            // 
+            this.lblSwaggerInstalled.AutoSize = true;
+            this.lblSwaggerInstalled.Location = new System.Drawing.Point(265, 203);
+            this.lblSwaggerInstalled.Name = "lblSwaggerInstalled";
+            this.lblSwaggerInstalled.Size = new System.Drawing.Size(336, 13);
+            this.lblSwaggerInstalled.TabIndex = 4;
+            this.lblSwaggerInstalled.Text = "Swagger is now installed! You can run it by pressing the below button!";
+            this.lblSwaggerInstalled.Visible = false;
+            // 
+            // btnRunSwagger
+            // 
+            this.btnRunSwagger.Location = new System.Drawing.Point(364, 219);
+            this.btnRunSwagger.Name = "btnRunSwagger";
+            this.btnRunSwagger.Size = new System.Drawing.Size(142, 23);
+            this.btnRunSwagger.TabIndex = 5;
+            this.btnRunSwagger.Text = "Run Swagger";
+            this.btnRunSwagger.UseVisualStyleBackColor = true;
+            this.btnRunSwagger.Visible = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(918, 593);
+            this.Controls.Add(this.cmbProfile);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -457,7 +483,7 @@
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Label lblProgress;
         private System.Windows.Forms.ProgressBar pbInstall;
-        private System.Windows.Forms.Button btnInstall;
+        private System.Windows.Forms.Button btnInstallSwagger;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.Button btnDownloadFromRemote;
         private System.Windows.Forms.Button btnUploadToRemote;
@@ -470,6 +496,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox lstLocalFiles;
         private System.Windows.Forms.Label lblCurProgress;
+        private System.Windows.Forms.Button btnRunSwagger;
+        private System.Windows.Forms.Label lblSwaggerInstalled;
     }
 }
 

@@ -19,6 +19,7 @@ namespace SSH_Remote_Client.BL
         void SetConnection(string sectionName, string configFile);
         void ExecuteCmdOnRemote(string fileName);
         void ExecuteCmdOnRemote(string[] cmds);
+        string GetValueFromConfig(string config, string section, string key);
         List<string> LoadSections(string filePath);
     }
 
@@ -106,7 +107,7 @@ namespace SSH_Remote_Client.BL
             FileInfo file = new FileInfo(filePath);
             string uploadFile = file.FullName;
             var fileStream = new FileStream(uploadFile, FileMode.Open);
-            sftp.UploadFile(fileStream, remotePath + file.Name, true, null);
+            sftp.UploadFile(fileStream, remotePath + "/" + file.Name, true, null);
             sftp.Disconnect();
             sftp.Dispose();
         }
@@ -136,6 +137,13 @@ namespace SSH_Remote_Client.BL
             foreach (var section in parsedData.Sections)
                 result.Add(section.SectionName);
             return result;
+        }
+
+        public string GetValueFromConfig(string config, string section, string key)
+        {
+            var parser = new FileIniDataParser();
+            var parsedData = parser.ReadFile(config);
+            return parsedData[section][key];
         }
         #endregion
 
