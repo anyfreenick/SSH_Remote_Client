@@ -128,8 +128,10 @@ namespace SSH_Remote_Client
                 files.Add(file.Name);
             dirs.Sort();
             files.Sort();
+            _view.ClearLocalFilesList();
+            _view.AddItemToLocalFileList("..");
             foreach (var item in dirs)
-                _view.AddItemToLocalFileList(item);
+                _view.AddItemToLocalFileList("[dir] " + item);
             foreach (var item in files)
                 _view.AddItemToLocalFileList(item);
         }

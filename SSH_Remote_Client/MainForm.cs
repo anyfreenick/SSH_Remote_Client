@@ -51,6 +51,7 @@ namespace SSH_Remote_Client
 
         // Методы        
         void AddItemToLocalFileList(object item);
+        void ClearLocalFilesList();
 
         // События
         event EventHandler LocalFilePathPressEnter;
@@ -277,6 +278,11 @@ namespace SSH_Remote_Client
         public void AddItemToLocalFileList(object item)
         {
             lstLocalFiles.Items.Add(item);
+        }
+
+        public void ClearLocalFilesList()
+        {
+            lstLocalFiles.Items.Clear();
         }
 
         // Events
