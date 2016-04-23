@@ -33,38 +33,10 @@ namespace SSH_Remote_Client
             _view.LocalFilePathPressEnter += _view_LocalFilePathPressEnter;
             _view.ButtonRunSwaggerClick += _view_ButtonRunSwaggerClick;
         }
-        
+
         #region Обработка событий
-        // Клик по кнопке Upload File
-        private void _view_FileUploadClick(object sender, EventArgs e)
-        {
-            connect();
-            _manager.UploadFile("script.sh");
-            _manager.ExecuteCmdOnRemote("script.sh");
-        }
 
-        // Клик по кнопке Search Files
-        private void _view_SearchFilesClick(object sender, EventArgs e)
-        {
-            _view.ClearListBox();
-            connect();
-            List<string> fileList = _manager.GetFileList();
-            fileList.Sort();
-            foreach (string file in fileList)
-                _view.AddItemToList(file);
-        }
-
-        // Двойной клик по имени файла в списке
-        private void _view_ListBoxItemDoubleClick(object sender, EventArgs e)
-        {
-            connect();
-            string log = _manager.GetFileContent(_view.SelectedItem);
-            if (log != "")
-                _view.Log = log;
-            else
-                _messageService.ShowMessage("File is empty");
-        }
-
+        #region Misc
         // Клик по элементу меню Tools --> Settings
         private void _view_ToolStripMenuSettingsClick(object sender, EventArgs e)
         {
@@ -94,7 +66,41 @@ namespace SSH_Remote_Client
             _view.ClearProfiles();
             LoadProfiles(_configFile);
         }
+        #endregion
 
+        #region SSH tab
+        // Клик по кнопке Upload File
+        private void _view_FileUploadClick(object sender, EventArgs e)
+        {
+            connect();
+            _manager.UploadFile("script.sh");
+            _manager.ExecuteCmdOnRemote("script.sh");
+        }
+
+        // Клик по кнопке Search Files
+        private void _view_SearchFilesClick(object sender, EventArgs e)
+        {
+            _view.ClearListBox();
+            connect();
+            List<string> fileList = _manager.GetFileList();
+            fileList.Sort();
+            foreach (string file in fileList)
+                _view.AddItemToList(file);
+        }
+
+        // Двойной клик по имени файла в списке
+        private void _view_ListBoxItemDoubleClick(object sender, EventArgs e)
+        {
+            connect();
+            string log = _manager.GetFileContent(_view.SelectedItem);
+            if (log != "")
+                _view.Log = log;
+            else
+                _messageService.ShowMessage("File is empty");
+        }
+        #endregion
+
+        #region Install swagger tab
         // Клик по кнопке Install swagger
         private void _view_InstallSwaggerButtonClick(object sender, EventArgs e)
         {
@@ -113,9 +119,18 @@ namespace SSH_Remote_Client
             _view.LabelCurrentProgress = "Done!!!";
             _view.ButtonIstallSwaggerEnabled = false;
             _view.LabelSwaggerInstalled = "Swagger is now installed! You can run it by pressing the below button!";
-            _view.ButtonRunSwaggerVisible = true;            
-        }
+            _view.ButtonRunSwaggerVisible = true;
+        }        
 
+        //Клик по кнопке Run Swagger
+        private void _view_ButtonRunSwaggerClick(object sender, EventArgs e)
+        {
+            string host = _manager.GetValueFromConfig(_configFile, _view.Profile, "host");
+            Process.Start("http://" + host + "/wfc/public/docs/index.html");
+        }
+        #endregion
+
+        #region Upload files to linux tab
         // Нажатие Enter в поле local file path
         private void _view_LocalFilePathPressEnter(object sender, EventArgs e)
         {
@@ -135,13 +150,8 @@ namespace SSH_Remote_Client
             foreach (var item in files)
                 _view.AddItemToLocalFileList(item);
         }
+        #endregion
 
-        //Клик по кнопке Run Swagger
-        private void _view_ButtonRunSwaggerClick(object sender, EventArgs e)
-        {
-            string host = _manager.GetValueFromConfig(_configFile, _view.Profile, "host");
-            Process.Start("http://" + host + "/wfc/public/docs/index.html");
-        }
         #endregion
 
         private void connect()
